@@ -1,0 +1,10 @@
+/* Placeholder stylesheet for EliTechWiz */
+:root {
+  --brand-color: #0f172a;
+  --brand-accent: #a855f7;
+}
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  color: #0f172a;
+  background-color: #ffffff;
+}
