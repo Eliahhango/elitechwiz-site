@@ -1,6 +1,0 @@
-<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Gartner Peer Insights">
-  <rect width="120" height="120" rx="28" fill="#0f172a" />
-  <circle cx="60" cy="60" r="50" fill="#1f2937" />
-  <text x="60" y="58" font-size="20" text-anchor="middle" font-family="'Inter', sans-serif" fill="#f8fafc" font-weight="700">Gartner</text>
-  <text x="60" y="82" font-size="10" text-anchor="middle" fill="#94a3b8">Peer Insights</text>
-</svg>
