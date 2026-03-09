@@ -1,0 +1,17 @@
+<svg width="200" height="48" viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EliTechWiz logo">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ac7cfa" />
+      <stop offset="100%" stop-color="#5b21b6" />
+    </linearGradient>
+    <linearGradient id="markGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0" />
+      <stop offset="100%" stop-color="#fff" stop-opacity="0.3" />
+    </linearGradient>
+  </defs>
+  <rect width="200" height="48" rx="14" fill="url(#logoGradient)" />
+  <rect x="12" y="9" width="176" height="30" rx="8" fill="url(#markGradient)" />
+  <text x="20" y="32" font-family="'Space Grotesk', 'Inter', sans-serif" font-size="20" font-weight="700" fill="#fff">
+    EliTechWiz
+  </text>
+</svg>

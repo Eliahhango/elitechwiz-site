@@ -1,0 +1,19 @@
+<svg width="360" height="220" viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Project dashboard illustration">
+  <defs>
+    <linearGradient id="dashBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1222" />
+      <stop offset="100%" stop-color="#1f2d52" />
+    </linearGradient>
+  </defs>
+  <rect width="360" height="220" rx="24" fill="url(#dashBg)" />
+  <rect x="30" y="36" width="300" height="40" rx="10" fill="#2e3a5f" />
+  <rect x="30" y="90" width="150" height="110" rx="16" fill="#1a213a" />
+  <rect x="196" y="90" width="134" height="110" rx="16" fill="#1a213a" />
+  <rect x="40" y="102" width="120" height="16" rx="8" fill="#4f5bc1" />
+  <rect x="40" y="130" width="90" height="10" rx="5" fill="#4f5bc1" />
+  <rect x="40" y="150" width="110" height="10" rx="5" fill="#3f4ef4" />
+  <rect x="206" y="102" width="80" height="10" rx="5" fill="#f8fafc" />
+  <rect x="206" y="122" width="80" height="10" rx="5" fill="#cbd5f5" />
+  <rect x="206" y="142" width="80" height="10" rx="5" fill="#94a3fc" />
+  <rect x="206" y="165" width="80" height="20" rx="10" fill="#facc15" />
+</svg>

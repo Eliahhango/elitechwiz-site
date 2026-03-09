@@ -1,0 +1,19 @@
+<svg width="360" height="220" viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Project enterprise illustration">
+  <defs>
+    <linearGradient id="entBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#040d18" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+  <rect width="360" height="220" rx="24" fill="url(#entBg)" />
+  <rect x="32" y="46" width="120" height="128" rx="16" fill="#111a2c" />
+  <rect x="168" y="36" width="156" height="152" rx="16" fill="#151f35" />
+  <rect x="40" y="64" width="104" height="16" rx="8" fill="#2563eb" />
+  <rect x="40" y="96" width="104" height="10" rx="5" fill="#94a3b8" />
+  <rect x="40" y="114" width="78" height="10" rx="5" fill="#cbd5f5" />
+  <rect x="48" y="144" width="60" height="8" rx="4" fill="#f7931a" />
+  <rect x="176" y="56" width="120" height="14" rx="6" fill="#22d3ee" />
+  <rect x="176" y="80" width="104" height="10" rx="5" fill="#38bdf8" />
+  <rect x="176" y="104" width="140" height="10" rx="5" fill="#fde68a" />
+  <rect x="176" y="132" width="80" height="6" rx="3" fill="#cbd5f5" />
+</svg>
