@@ -1,7 +1,6 @@
 ﻿(function () {
   let styleInjected = false;
   let injectTimer = null;
-  let lenisAttrCleaner = null;
 
   function scheduleInject(delay) {
     if (injectTimer) clearTimeout(injectTimer);
@@ -30,10 +29,6 @@
     setTimeout(removeLenisPreventAttributes, 50);
     setTimeout(removeLenisPreventAttributes, 300);
     setTimeout(removeLenisPreventAttributes, 1200);
-
-    if (lenisAttrCleaner) clearInterval(lenisAttrCleaner);
-    // Some pages re-apply this attribute later; keep a light cleanup guard.
-    lenisAttrCleaner = setInterval(removeLenisPreventAttributes, 2000);
   }
 
   function installTabsScrollFixes() {
@@ -246,3 +241,4 @@
     }
   }, { passive: true });
 })();
+
