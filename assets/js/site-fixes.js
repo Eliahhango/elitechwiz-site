@@ -1,6 +1,17 @@
 ﻿(function () {
+  let styleInjected = false;
+  let injectTimer = null;
+
+  function scheduleInject(delay) {
+    if (injectTimer) clearTimeout(injectTimer);
+    injectTimer = setTimeout(function () {
+      injectTimer = null;
+      injectSections();
+    }, typeof delay === 'number' ? delay : 0);
+  }
+
   function ensureStyle() {
-    if (document.getElementById('site-fixes-services-style')) return;
+    if (styleInjected || document.getElementById('site-fixes-services-style')) return;
     const style = document.createElement('style');
     style.id = 'site-fixes-services-style';
     style.textContent = [
@@ -17,6 +28,7 @@
       '@media (max-width:1279px){.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-desktop-section.is-3-col{grid-template-columns:repeat(2,minmax(220px,1fr)) !important;}}'
     ].join('');
     document.head.appendChild(style);
+    styleInjected = true;
   }
 
   const cyberLinks = [
@@ -129,26 +141,35 @@
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', injectSections);
+    document.addEventListener('DOMContentLoaded', function () {
+      injectSections();
+      scheduleInject(250);
+      scheduleInject(1200);
+    });
   } else {
     injectSections();
+    scheduleInject(250);
+    scheduleInject(1200);
   }
 
-  document.addEventListener('mouseover', function (e) {
-    if (e.target && e.target.closest && e.target.closest('.navbar_link-main.w-dropdown, .navbar_link-main.is-dekstop.w-dropdown')) {
-      injectSections();
+  document.addEventListener('mouseenter', function (e) {
+    if (
+      e.target &&
+      e.target.closest &&
+      e.target.closest('.navbar_link-main.w-dropdown, .navbar_link-main.is-dekstop.w-dropdown')
+    ) {
+      scheduleInject(0);
     }
-  });
+  }, true);
 
   document.addEventListener('click', function (e) {
-    if (e.target && e.target.closest && e.target.closest('.navbar_dropdown-toggle, .navbar_control-btn')) {
-      setTimeout(injectSections, 0);
-      setTimeout(injectSections, 120);
+    if (
+      e.target &&
+      e.target.closest &&
+      e.target.closest('.navbar_dropdown-toggle, .navbar_control-btn')
+    ) {
+      scheduleInject(0);
+      scheduleInject(120);
     }
-  });
-
-  const observer = new MutationObserver(function () {
-    injectSections();
-  });
-  observer.observe(document.documentElement, { childList: true, subtree: true });
+  }, { passive: true });
 })();
