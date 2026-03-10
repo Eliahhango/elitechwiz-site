@@ -21,9 +21,24 @@
     document.addEventListener('click', function (e) {
       const tabLink = e.target && e.target.closest ? e.target.closest('a.w-tab-link') : null;
       if (!tabLink) return;
-      e.preventDefault();
-      setTimeout(clearTabsHash, 0);
+      setTimeout(function () {
+        clearTabsHash();
+        if (document.activeElement && document.activeElement.blur) {
+          document.activeElement.blur();
+        }
+      }, 0);
     }, true);
+
+    document.addEventListener('touchend', function (e) {
+      const tabLink = e.target && e.target.closest ? e.target.closest('a.w-tab-link') : null;
+      if (!tabLink) return;
+      setTimeout(function () {
+        clearTabsHash();
+        if (document.activeElement && document.activeElement.blur) {
+          document.activeElement.blur();
+        }
+      }, 0);
+    }, { passive: true, capture: true });
 
     window.addEventListener('hashchange', function () {
       clearTabsHash();
