@@ -10,6 +10,36 @@
     }, typeof delay === 'number' ? delay : 0);
   }
 
+  function clearTabsHash() {
+    if (window.location.hash && window.location.hash.indexOf('#w-tabs-') === 0) {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+  }
+
+  function installTabsScrollFixes() {
+    // Prevent Webflow tab links from polluting URL hash and stealing scroll flow.
+    document.addEventListener('click', function (e) {
+      const tabLink = e.target && e.target.closest ? e.target.closest('a.w-tab-link') : null;
+      if (!tabLink) return;
+      e.preventDefault();
+      setTimeout(clearTabsHash, 0);
+    }, true);
+
+    window.addEventListener('hashchange', function () {
+      clearTabsHash();
+    });
+
+    // If tab menu has focus, arrow keys should scroll page rather than cycling tabs.
+    document.addEventListener('keydown', function (e) {
+      const focused = document.activeElement;
+      if (!focused || !focused.closest) return;
+      if (!focused.closest('.w-tab-menu')) return;
+      if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp' && e.key !== 'PageDown' && e.key !== 'PageUp') return;
+      focused.blur();
+      clearTabsHash();
+    }, true);
+  }
+
   function ensureStyle() {
     if (styleInjected || document.getElementById('site-fixes-services-style')) return;
     const style = document.createElement('style');
@@ -142,11 +172,13 @@
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
+      installTabsScrollFixes();
       injectSections();
       scheduleInject(250);
       scheduleInject(1200);
     });
   } else {
+    installTabsScrollFixes();
     injectSections();
     scheduleInject(250);
     scheduleInject(1200);
