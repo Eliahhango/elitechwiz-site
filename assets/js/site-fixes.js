@@ -8,14 +8,13 @@
       'img{max-width:100%;height:auto;}',
       '@media (min-width:992px){',
       '.navbar_dropmenu-desktop,.navbar_dropmenu-desktop-section-wrapper.is-services,.navbar_dropmenu.is-deskotp.w-dropdown-list{overflow:visible !important;}',
-      '.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-desktop-section.is-3-col{display:grid !important;grid-template-columns:repeat(5,minmax(0,1fr)) !important;column-gap:18px !important;row-gap:14px !important;min-width:0 !important;width:100% !important;}',
+      '.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-desktop-section.is-3-col{display:grid !important;grid-template-columns:repeat(4,minmax(220px,1fr)) !important;column-gap:28px !important;row-gap:16px !important;min-width:0 !important;width:100% !important;}',
       '.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-section{width:auto !important;max-width:none !important;min-width:0 !important;flex:0 0 auto !important;}',
       '.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-link{width:100% !important;max-width:none !important;}',
-      '.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropwmenu-link-text{min-width:0 !important;}',
-      '.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-link-text{overflow-wrap:anywhere;}',
+      '.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropwmenu-link-text{min-width:0 !important;overflow-wrap:break-word;word-break:normal;}',
       '}',
-      '@media (min-width:992px) and (max-width:1439px){.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-desktop-section.is-3-col{grid-template-columns:repeat(4,minmax(0,1fr)) !important;}}',
-      '@media (max-width:1279px){.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-desktop-section.is-3-col{grid-template-columns:repeat(3,minmax(0,1fr)) !important;}}'
+      '@media (min-width:992px) and (max-width:1439px){.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-desktop-section.is-3-col{grid-template-columns:repeat(3,minmax(220px,1fr)) !important;}}',
+      '@media (max-width:1279px){.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-desktop-section.is-3-col{grid-template-columns:repeat(2,minmax(220px,1fr)) !important;}}'
     ].join('');
     document.head.appendChild(style);
   }
@@ -84,6 +83,16 @@
     return Array.from(labels).some((n) => n.textContent.trim().toLowerCase() === name.toLowerCase());
   }
 
+  function removeSection(container, name) {
+    const labels = container.querySelectorAll('.navbar_dropmenu-label');
+    labels.forEach((n) => {
+      if (n.textContent.trim().toLowerCase() === name.toLowerCase()) {
+        const section = n.closest('.navbar_dropmenu-section');
+        if (section) section.remove();
+      }
+    });
+  }
+
   function injectSections() {
     ensureStyle();
 
@@ -95,6 +104,8 @@
 
       const desktopContainer = dropdown.querySelector('.navbar_dropmenu-desktop-section.is-3-col');
       if (desktopContainer) {
+        removeSection(desktopContainer, 'Branding');
+
         if (!hasSection(desktopContainer, 'Cybersecurity')) {
           desktopContainer.appendChild(createSection('Cybersecurity', cyberLinks, true));
         }
@@ -105,6 +116,8 @@
 
       const mobileContainer = dropdown.querySelector('.navbar_dropmenu.w-dropdown-list');
       if (mobileContainer) {
+        removeSection(mobileContainer, 'Branding');
+
         if (!hasSection(mobileContainer, 'Cybersecurity')) {
           mobileContainer.appendChild(createSection('Cybersecurity', cyberLinks, false));
         }
