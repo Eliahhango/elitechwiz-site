@@ -8,11 +8,14 @@
       'img{max-width:100%;height:auto;}',
       '@media (min-width:992px){',
       '.navbar_dropmenu-desktop,.navbar_dropmenu-desktop-section-wrapper.is-services,.navbar_dropmenu.is-deskotp.w-dropdown-list{overflow:visible !important;}',
-      '.navbar_dropmenu-desktop-section.is-3-col{display:grid !important;grid-template-columns:repeat(5,minmax(170px,1fr)) !important;column-gap:20px !important;row-gap:14px !important;min-width:min(1500px,calc(100vw - 120px));}',
-      '.navbar_dropmenu-desktop-section.is-3-col>.navbar_dropmenu-section{min-width:0;}',
+      '.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-desktop-section.is-3-col{display:grid !important;grid-template-columns:repeat(5,minmax(0,1fr)) !important;column-gap:18px !important;row-gap:14px !important;min-width:0 !important;width:100% !important;}',
+      '.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-section{width:auto !important;max-width:none !important;min-width:0 !important;flex:0 0 auto !important;}',
+      '.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-link{width:100% !important;max-width:none !important;}',
+      '.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropwmenu-link-text{min-width:0 !important;}',
+      '.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-link-text{overflow-wrap:anywhere;}',
       '}',
-      '@media (min-width:992px) and (max-width:1439px){.navbar_dropmenu-desktop-section.is-3-col{grid-template-columns:repeat(4,minmax(170px,1fr)) !important;min-width:min(1300px,calc(100vw - 80px));}}',
-      '@media (max-width:1279px){.navbar_dropmenu-desktop-section.is-3-col{grid-template-columns:repeat(3,minmax(160px,1fr)) !important;min-width:100% !important;}}'
+      '@media (min-width:992px) and (max-width:1439px){.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-desktop-section.is-3-col{grid-template-columns:repeat(4,minmax(0,1fr)) !important;}}',
+      '@media (max-width:1279px){.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-desktop-section.is-3-col{grid-template-columns:repeat(3,minmax(0,1fr)) !important;}}'
     ].join('');
     document.head.appendChild(style);
   }
