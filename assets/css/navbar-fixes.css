@@ -1,0 +1,25 @@
+/* Mobile navbar fix: hide desktop nav links on mobile screens */
+@media (max-width: 991px) {
+    .navbar_links-desktop {
+        display: none !important;
+    }
+}
+
+/* Fix dual-title hover animation: ensure only one title is visible at a time */
+.navbar_link-title-wrapper.is-toggle {
+    overflow: hidden;
+}
+
+/* Ensure mobile menu is hidden by default and shown only when opened */
+.container.navmenu-container-laptop {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.25s ease-in-out;
+    display: block !important;
+}
+
+.navmenu-container-laptop.open {
+    opacity: 1 !important;
+    pointer-events: all !important;
+    display: block !important;
+}
