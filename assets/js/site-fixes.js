@@ -1,6 +1,7 @@
 ﻿(function () {
   let styleInjected = false;
   let injectTimer = null;
+  let lenisAttrCleaner = null;
 
   function scheduleInject(delay) {
     if (injectTimer) clearTimeout(injectTimer);
@@ -16,8 +17,26 @@
     }
   }
 
+  function removeLenisPreventAttributes() {
+    const blocked = document.querySelectorAll('[data-lenis-prevent]');
+    blocked.forEach(function (el) {
+      if (el.classList && el.classList.contains('w-editor-bem-EditorApp_Main')) return;
+      el.removeAttribute('data-lenis-prevent');
+    });
+  }
+
+  function installLenisUnblockFix() {
+    removeLenisPreventAttributes();
+    setTimeout(removeLenisPreventAttributes, 50);
+    setTimeout(removeLenisPreventAttributes, 300);
+    setTimeout(removeLenisPreventAttributes, 1200);
+
+    if (lenisAttrCleaner) clearInterval(lenisAttrCleaner);
+    // Some pages re-apply this attribute later; keep a light cleanup guard.
+    lenisAttrCleaner = setInterval(removeLenisPreventAttributes, 2000);
+  }
+
   function installTabsScrollFixes() {
-    // Prevent Webflow tab links from polluting URL hash and stealing scroll flow.
     document.addEventListener('click', function (e) {
       const tabLink = e.target && e.target.closest ? e.target.closest('a.w-tab-link') : null;
       if (!tabLink) return;
@@ -44,7 +63,6 @@
       clearTabsHash();
     });
 
-    // If tab menu has focus, arrow keys should scroll page rather than cycling tabs.
     document.addEventListener('keydown', function (e) {
       const focused = document.activeElement;
       if (!focused || !focused.closest) return;
@@ -101,7 +119,7 @@
     labelNode.textContent = label;
     section.appendChild(labelNode);
 
-    links.forEach((item) => {
+    links.forEach(function (item) {
       const link = document.createElement('a');
       link.href = item.href;
       link.className = 'navbar_dropmenu-link w-inline-block';
@@ -137,12 +155,14 @@
 
   function hasSection(container, name) {
     const labels = container.querySelectorAll('.navbar_dropmenu-label');
-    return Array.from(labels).some((n) => n.textContent.trim().toLowerCase() === name.toLowerCase());
+    return Array.from(labels).some(function (n) {
+      return n.textContent.trim().toLowerCase() === name.toLowerCase();
+    });
   }
 
   function removeSection(container, name) {
     const labels = container.querySelectorAll('.navbar_dropmenu-label');
-    labels.forEach((n) => {
+    labels.forEach(function (n) {
       if (n.textContent.trim().toLowerCase() === name.toLowerCase()) {
         const section = n.closest('.navbar_dropmenu-section');
         if (section) section.remove();
@@ -155,7 +175,7 @@
 
     const dropdowns = document.querySelectorAll('.navbar_link-main.w-dropdown, .navbar_link-main.is-dekstop.w-dropdown');
 
-    dropdowns.forEach((dropdown) => {
+    dropdowns.forEach(function (dropdown) {
       const titleNode = dropdown.querySelector('.navbar_dropdown-toggle .navbar_link-title');
       if (!titleNode || titleNode.textContent.trim().toLowerCase() !== 'services') return;
 
@@ -187,17 +207,23 @@
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
+      installLenisUnblockFix();
       installTabsScrollFixes();
       injectSections();
       scheduleInject(250);
       scheduleInject(1200);
     });
   } else {
+    installLenisUnblockFix();
     installTabsScrollFixes();
     injectSections();
     scheduleInject(250);
     scheduleInject(1200);
   }
+
+  window.addEventListener('load', function () {
+    installLenisUnblockFix();
+  });
 
   document.addEventListener('mouseenter', function (e) {
     if (
