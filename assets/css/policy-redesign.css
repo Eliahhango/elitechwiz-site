@@ -1,0 +1,223 @@
+:root {
+  --policy-bg: #070b16;
+  --policy-surface: rgba(15, 23, 42, 0.86);
+  --policy-surface-2: rgba(17, 25, 45, 0.72);
+  --policy-border: rgba(148, 163, 184, 0.24);
+  --policy-text: #e6ebff;
+  --policy-muted: #b7c0da;
+  --policy-link: #8fb4ff;
+  --policy-accent: #86f4da;
+}
+
+html,
+body {
+  background: radial-gradient(circle at 15% -10%, #243a7a 0%, rgba(36, 58, 122, 0) 40%),
+    radial-gradient(circle at 90% 15%, #2a1d54 0%, rgba(42, 29, 84, 0) 36%),
+    var(--policy-bg);
+  color: var(--policy-text);
+}
+
+.page-main {
+  padding: 10rem 0 4rem;
+}
+
+.section_policy {
+  padding: 0 0 6rem;
+}
+
+.container-new {
+  max-width: 1320px;
+  padding-left: 2.4rem;
+  padding-right: 2.4rem;
+}
+
+.policy_content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+}
+
+.policy_wrapper {
+  display: grid;
+  grid-template-columns: minmax(250px, 300px) minmax(0, 1fr);
+  gap: 2.4rem;
+  align-items: start;
+}
+
+.policy_nav {
+  position: sticky;
+  top: 10.5rem;
+  background: var(--policy-surface);
+  border: 1px solid var(--policy-border);
+  border-radius: 1.6rem;
+  padding: 1.8rem 1.6rem;
+  backdrop-filter: blur(12px);
+  max-height: calc(100vh - 13rem);
+  overflow: auto;
+}
+
+.policy_nav-topics {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0 1.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(134, 244, 218, 0.35);
+  color: var(--policy-accent);
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.policy_nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.policy_nav-link {
+  display: block;
+  color: var(--policy-muted);
+  border-radius: 1rem;
+  padding: 0.9rem 0.8rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.policy_nav-link:hover {
+  color: #f4f7ff;
+  background: rgba(144, 166, 219, 0.13);
+}
+
+.policy_nav-link.w--current {
+  color: #ffffff;
+  background: rgba(134, 244, 218, 0.15);
+  -webkit-text-stroke-width: 0 !important;
+}
+
+.policy_nav-link-active-line {
+  display: none;
+}
+
+.policy_main {
+  background: var(--policy-surface);
+  border: 1px solid var(--policy-border);
+  border-radius: 2rem;
+  padding: 3.2rem clamp(1.8rem, 2.5vw, 3.4rem);
+  box-shadow: 0 16px 55px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(8px);
+}
+
+.policy_heading {
+  color: #f8faff;
+  font-size: clamp(3.2rem, 4.5vw, 5.2rem);
+  line-height: 1.05;
+  margin-bottom: 1.4rem;
+}
+
+.policy_heading-h2 {
+  color: #ffffff;
+  font-size: clamp(2.2rem, 2.4vw, 3rem);
+  line-height: 1.2;
+  margin-bottom: 0.8rem;
+}
+
+.policy_bloc-subheading {
+  color: var(--policy-accent);
+  font-weight: 700;
+}
+
+.policy_paragraph {
+  color: var(--policy-muted);
+  font-size: clamp(1.55rem, 1.45rem + 0.2vw, 1.78rem);
+  line-height: 1.75;
+}
+
+.policy_link {
+  color: var(--policy-link);
+  text-decoration-color: rgba(143, 180, 255, 0.55);
+}
+
+.policy_link:hover {
+  color: #bfd4ff;
+}
+
+.policy_block {
+  padding-top: 0.4rem;
+}
+
+.policy_block + .policy_block {
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+  margin-top: 2.2rem;
+  padding-top: 2.2rem;
+}
+
+.policy_block-p + .policy_block-p {
+  margin-top: 1.4rem;
+}
+
+.policy_list {
+  margin-top: 0.8rem;
+  margin-left: 1.8rem;
+}
+
+.policy_list-item {
+  color: var(--policy-muted);
+  margin: 0.45rem 0;
+}
+
+.breadcrumbs {
+  width: fit-content;
+  max-width: 100%;
+  background: var(--policy-surface-2);
+  border: 1px solid var(--policy-border);
+  border-radius: 999px;
+  padding: 0.9rem 1.3rem;
+  backdrop-filter: blur(10px);
+}
+
+.breadcrumbs_link,
+.breadcrumbs_text {
+  color: #d8e0f8 !important;
+}
+
+.breadcrumbs_link.is-current {
+  color: #ffffff !important;
+}
+
+@media (max-width: 991px) {
+  .policy_wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .policy_nav {
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .policy_nav-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .policy_main {
+    padding: 2.2rem 1.8rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .page-main {
+    padding-top: 8.8rem;
+  }
+
+  .container-new {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .policy_nav-links {
+    grid-template-columns: 1fr;
+  }
+}
