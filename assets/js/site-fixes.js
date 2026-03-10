@@ -1,7 +1,22 @@
-﻿(function () {
+(function () {
   let styleInjected = false;
   let injectTimer = null;
 
+    function ensureWebflowIxClassFallback() {
+    const root = document.documentElement;
+    if (!root || !root.classList) return;
+    if (!root.classList.contains('w-mod-js')) return;
+
+    // If Webflow ix runtime fails to set this class, desktop pre-hide styles can leave pages blank.
+    const applyFallback = function () {
+      if (!root.classList.contains('w-mod-ix')) {
+        root.classList.add('w-mod-ix');
+      }
+    };
+
+    setTimeout(applyFallback, 600);
+    window.addEventListener('load', applyFallback, { once: true });
+  }
   function scheduleInject(delay) {
     if (injectTimer) clearTimeout(injectTimer);
     injectTimer = setTimeout(function () {
@@ -202,6 +217,7 @@
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
+      ensureWebflowIxClassFallback();
       installLenisUnblockFix();
       installTabsScrollFixes();
       injectSections();
@@ -209,6 +225,7 @@
       scheduleInject(1200);
     });
   } else {
+    ensureWebflowIxClassFallback();
     installLenisUnblockFix();
     installTabsScrollFixes();
     injectSections();
