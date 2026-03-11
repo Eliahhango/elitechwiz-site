@@ -139,44 +139,7 @@
       '@media (min-width:992px) and (max-width:1439px){.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-desktop-section.is-3-col{grid-template-columns:repeat(3,minmax(220px,1fr)) !important;}}',
       '@media (max-width:1279px){.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-desktop-section.is-3-col{grid-template-columns:repeat(2,minmax(220px,1fr)) !important;}}',
       '.section_services-awards,.services-page-awards_cards,.services-page_awards-wrapper,.services-page_show-more,.home-ready-to-scale__logos,.works-match_awards,.works-match_awards-card{display:none !important;}',
-      '.elite-service-page .hero_title-tag{border:1px solid rgba(130,164,255,.45);background:rgba(16,28,66,.42);backdrop-filter:blur(4px);}',
-      '.elite-service-page .services-hero_heading-wrapper .is-italic{color:#8ec5ff;}',
-      '.elite-service-page-cyber .services-hero_heading-wrapper .is-italic{color:#73ffe0;}',
-      '.elite-service-page-civil .services-hero_heading-wrapper .is-italic{color:#9fcbff;}',
-      '.elite-service-page .services-benefits_card-list-item{font-weight:600;}',
-      '.elite-service-page .faq_item-question{font-weight:700;}',
-      '.elite-service-wrap{width:min(1240px,calc(100% - 40px));margin:0 auto;}',
-      '.elite-service-hero{padding:clamp(34px,5vw,72px) 0;background:linear-gradient(160deg,#070d20,#0f2455 50%,#1a3f84);}',
-      '.elite-service-hero .elite-service-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center;}',
-      '.elite-service-breadcrumbs{font-size:13px;color:rgba(229,236,255,.7);margin-bottom:14px;}',
-      '.elite-service-breadcrumbs a{color:#bdd6ff;text-decoration:none;}',
-      '.elite-service-chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}',
-      '.elite-service-chips .hero_title-tag{padding:8px 12px;border-radius:999px;color:#eaf3ff;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}',
-      '.elite-service-copy h1{margin:0 0 10px;font-size:clamp(38px,5.6vw,72px);line-height:.95;color:#fff;font-weight:800;}',
-      '.elite-service-copy h1 em{font-style:normal;color:#8ec5ff;}',
-      '.elite-service-copy h2{margin:0 0 14px;color:#d7e6ff;font-size:clamp(22px,2.2vw,34px);line-height:1.15;font-weight:600;}',
-      '.elite-service-copy p{margin:0 0 22px;color:#c6d7f5;font-size:clamp(16px,1.25vw,20px);line-height:1.55;}',
-      '.elite-service-visual img{width:100%;border-radius:26px;border:1px solid rgba(167,191,255,.42);box-shadow:0 20px 45px rgba(1,8,30,.45);}',
-      '.elite-service-kpis{padding:26px 0;background:#070b18;}',
-      '.elite-service-kpi-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}',
-      '.elite-service-kpi{padding:20px;border-radius:16px;background:#0f1830;border:1px solid #25355f;}',
-      '.elite-service-kpi h3{margin:0 0 10px;color:#9ed3ff;font-size:34px;line-height:1;font-weight:800;}',
-      '.elite-service-kpi p{margin:0;color:#dbe8ff;font-size:15px;line-height:1.5;}',
-      '.elite-service-blocks,.elite-service-process,.elite-service-faq,.elite-service-cta{padding:34px 0;background:#070b18;}',
-      '.elite-service-blocks .elite-service-wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}',
-      '.elite-service-panel{padding:22px;border-radius:18px;background:#111a33;border:1px solid #27385f;}',
-      '.elite-service-panel h3,.elite-service-process h3,.elite-service-faq h3,.elite-service-cta h3{margin:0 0 12px;color:#fff;font-size:30px;font-weight:760;}',
-      '.elite-service-panel ul{margin:0;padding-left:20px;display:grid;gap:9px;}',
-      '.elite-service-panel li{color:#cbdcff;font-size:16px;line-height:1.5;}',
-      '.elite-service-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;}',
-      '.elite-service-step{padding:18px;border-radius:14px;background:#111a33;border:1px solid #27385f;}',
-      '.elite-service-step span{display:inline-block;margin-bottom:8px;color:#8ed0ff;font-size:12px;font-weight:800;letter-spacing:.08em;}',
-      '.elite-service-step p{margin:0;color:#d8e7ff;font-size:15px;line-height:1.45;}',
-      '.elite-service-faq-item{margin:0 0 10px;padding:14px 16px;border-radius:12px;background:#111a33;border:1px solid #27385f;}',
-      '.elite-service-faq-item summary{cursor:pointer;color:#fff;font-size:17px;font-weight:700;}',
-      '.elite-service-faq-item p{margin:10px 0 0;color:#cfe0ff;font-size:15px;line-height:1.55;}',
-      '.elite-service-cta p{margin:0 0 18px;color:#cbdcff;font-size:17px;line-height:1.55;max-width:72ch;}',
-      '@media (max-width:991px){.elite-service-hero .elite-service-wrap{grid-template-columns:1fr;}.elite-service-kpi-grid,.elite-service-blocks .elite-service-wrap,.elite-service-steps{grid-template-columns:1fr;}.elite-service-copy h1{font-size:42px;}.elite-service-panel h3,.elite-service-process h3,.elite-service-faq h3,.elite-service-cta h3{font-size:24px;}}'
+      '.services-hero_custom-image{width:100%;height:auto;display:block;}'
     ].join('');
     document.head.appendChild(style);
     styleInjected = true;
@@ -1115,6 +1078,19 @@
     }
   };
 
+  const serviceHeroImages = {
+    '/services/penetration-testing': '/assets/images/services/penetration-testing-hero.svg',
+    '/services/network-security': '/assets/images/services/network-security-hero.svg',
+    '/services/cybersecurity-consulting': '/assets/images/services/cybersecurity-consulting-hero.svg',
+    '/services/cloud-security': '/assets/images/services/cloud-security-hero.svg',
+    '/services/security-audits': '/assets/images/services/security-audits-hero.svg',
+    '/services/structural-design': '/assets/images/services/structural-design-hero.svg',
+    '/services/construction-management': '/assets/images/services/construction-management-hero.svg',
+    '/services/infrastructure-planning': '/assets/images/services/infrastructure-planning-hero.svg',
+    '/services/cad-bim-services': '/assets/images/services/cad-bim-services-hero.svg',
+    '/services/environmental-engineering': '/assets/images/services/environmental-engineering-hero.svg'
+  };
+
   function setNodeText(node, text, asHtml) {
     if (!node) return;
     if (asHtml) node.innerHTML = text;
@@ -1134,15 +1110,16 @@
     const data = servicePageData[path];
     if (!data) return;
 
-    document.body.classList.add('elite-service-page');
-    document.body.classList.add(data.theme === 'cyber' ? 'elite-service-page-cyber' : 'elite-service-page-civil');
-
     document.title = data.title;
     setMetaByName('description', data.description);
     setMetaByProperty('og:title', data.title);
     setMetaByProperty('twitter:title', data.title);
     setMetaByProperty('og:description', data.description);
     setMetaByProperty('twitter:description', data.description);
+    if (serviceHeroImages[path]) {
+      setMetaByProperty('og:image', serviceHeroImages[path]);
+      setMetaByProperty('twitter:image', serviceHeroImages[path]);
+    }
 
     setNodeText(document.querySelector('.services-hero_heading-wrapper .heading-style-h1'), data.heroTitle, true);
     setNodeText(document.querySelector('.services-hero_text'), data.heroText);
@@ -1194,6 +1171,26 @@
 
     setNodeText(document.querySelector('.services-cta_heading'), data.ctaTitle, false);
     setNodeText(document.querySelector('.services-cta_text'), data.ctaText);
+
+    const heroMobile = document.querySelector('.services-hero_image.is-mob');
+    if (heroMobile && serviceHeroImages[path]) {
+      heroMobile.setAttribute('src', serviceHeroImages[path]);
+      heroMobile.setAttribute('alt', data.title);
+    }
+
+    const heroVisual = document.querySelector('.services-hero_image.web-dev');
+    if (heroVisual && serviceHeroImages[path]) {
+      heroVisual.removeAttribute('data-animation-type');
+      heroVisual.removeAttribute('data-src');
+      heroVisual.removeAttribute('data-loop');
+      heroVisual.removeAttribute('data-direction');
+      heroVisual.removeAttribute('data-autoplay');
+      heroVisual.removeAttribute('data-is-ix2-target');
+      heroVisual.removeAttribute('data-renderer');
+      heroVisual.removeAttribute('data-default-duration');
+      heroVisual.removeAttribute('data-duration');
+      heroVisual.innerHTML = '<img class="services-hero_custom-image" src="' + serviceHeroImages[path] + '" alt="' + data.title + '"/>';
+    }
   }
 
   const deepServicePages = {
@@ -1210,6 +1207,7 @@
   };
 
   function rewriteServicePagesDeep() {
+    return;
     if (!window.location) return;
     const path = window.location.pathname || '';
     const data = deepServicePages[path];
@@ -1500,7 +1498,6 @@
       rewriteHomePageCopy();
       refreshBlogContent();
       rewriteServicePages();
-      rewriteServicePagesDeep();
       scheduleInject(250);
       scheduleInject(1200);
       setTimeout(replaceFooterLocations, 250);
@@ -1518,7 +1515,6 @@
       setTimeout(rewriteHomePageCopy, 250);
       setTimeout(refreshBlogContent, 250);
       setTimeout(rewriteServicePages, 250);
-      setTimeout(rewriteServicePagesDeep, 250);
     });
   } else {
     ensureWebflowIxClassFallback();
@@ -1540,7 +1536,6 @@
     rewriteHomePageCopy();
     refreshBlogContent();
     rewriteServicePages();
-    rewriteServicePagesDeep();
     scheduleInject(250);
     scheduleInject(1200);
     setTimeout(replaceFooterLocations, 250);
@@ -1558,7 +1553,6 @@
     setTimeout(rewriteHomePageCopy, 250);
     setTimeout(refreshBlogContent, 250);
     setTimeout(rewriteServicePages, 250);
-    setTimeout(rewriteServicePagesDeep, 250);
   }
 
   window.addEventListener('load', function () {
@@ -1598,7 +1592,6 @@
       setTimeout(rewriteHomePageCopy, 120);
       setTimeout(refreshBlogContent, 120);
       setTimeout(rewriteServicePages, 120);
-      setTimeout(rewriteServicePagesDeep, 120);
     }
   }, { passive: true });
 })();
