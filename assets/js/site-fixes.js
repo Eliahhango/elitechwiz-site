@@ -324,6 +324,24 @@
     });
   }
 
+  function removeAwardsSections() {
+    const sections = document.querySelectorAll('.section_services-awards');
+    sections.forEach(function (section) {
+      section.remove();
+    });
+
+    // Fallback for pages where the same awards block is embedded outside the main section class.
+    const mains = document.querySelectorAll('.services-page-awards_main');
+    mains.forEach(function (main) {
+      const hostSection = main.closest('section');
+      if (hostSection) {
+        hostSection.remove();
+      } else {
+        main.remove();
+      }
+    });
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       ensureWebflowIxClassFallback();
@@ -333,11 +351,13 @@
       replaceFooterLocations();
       removeSelectedAwardBadges();
       removeFooterAwardsStrip();
+      removeAwardsSections();
       scheduleInject(250);
       scheduleInject(1200);
       setTimeout(replaceFooterLocations, 250);
       setTimeout(removeSelectedAwardBadges, 250);
       setTimeout(removeFooterAwardsStrip, 250);
+      setTimeout(removeAwardsSections, 250);
     });
   } else {
     ensureWebflowIxClassFallback();
@@ -347,11 +367,13 @@
     replaceFooterLocations();
     removeSelectedAwardBadges();
     removeFooterAwardsStrip();
+    removeAwardsSections();
     scheduleInject(250);
     scheduleInject(1200);
     setTimeout(replaceFooterLocations, 250);
     setTimeout(removeSelectedAwardBadges, 250);
     setTimeout(removeFooterAwardsStrip, 250);
+    setTimeout(removeAwardsSections, 250);
   }
 
   window.addEventListener('load', function () {
@@ -379,6 +401,7 @@
       setTimeout(replaceFooterLocations, 120);
       setTimeout(removeSelectedAwardBadges, 120);
       setTimeout(removeFooterAwardsStrip, 120);
+      setTimeout(removeAwardsSections, 120);
     }
   }, { passive: true });
 })();
