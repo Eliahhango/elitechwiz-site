@@ -1,0 +1,22 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#050711"/>
+      <stop offset="0.55" stop-color="#182b78"/>
+      <stop offset="1" stop-color="#2d7eff"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1150 170) rotate(125) scale(600 380)">
+      <stop stop-color="#7CC4FF" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#7CC4FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+  <circle cx="340" cy="780" r="290" fill="#5B69FF" fill-opacity="0.38"/>
+  <circle cx="1320" cy="120" r="180" fill="#4ED8FF" fill-opacity="0.22"/>
+  <text x="110" y="360" fill="#F4F7FF" font-family="Poppins, Arial, sans-serif" font-size="78" font-weight="700">Homepage UX Blueprint</text>
+  <text x="110" y="450" fill="#F4F7FF" font-family="Poppins, Arial, sans-serif" font-size="78" font-weight="700">for Tanzanian Services</text>
+  <text x="110" y="540" fill="#B9C8FF" font-family="Poppins, Arial, sans-serif" font-size="42" font-weight="500">Clear messaging, stronger trust, better conversion</text>
+  <rect x="110" y="615" rx="24" ry="24" width="260" height="58" fill="#0B112B" fill-opacity="0.75" stroke="#4B77FF"/>
+  <text x="145" y="653" fill="#9FC0FF" font-family="Poppins, Arial, sans-serif" font-size="30" font-weight="600">EliTechWiz Blog</text>
+</svg>

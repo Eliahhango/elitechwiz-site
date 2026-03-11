@@ -814,6 +814,232 @@
     if (document.body) document.body.setAttribute('data-elite-home-copy', '1');
   }
 
+  const newBlogPosts = [
+    {
+      slug: '/blog/homepage-design',
+      title: 'Homepage UX Blueprint for Tanzanian Service Brands in 2026',
+      category: 'Growth Strategy',
+      readTime: '8 min read',
+      dateDisplay: '11.03.2026',
+      image: '/assets/images/blog/homepage-ux-blueprint.svg',
+      description: 'A practical homepage framework for service businesses that want more qualified leads and better user flow.',
+      body: [
+        '<p>Most service websites lose potential customers in the first ten seconds. The issue is rarely traffic. The issue is unclear structure, weak hierarchy, and messaging that does not answer real buyer questions.</p>',
+        '<p>This guide explains how Tanzanian service brands can structure homepage content for stronger trust and faster conversion. The goal is practical: help visitors quickly understand what you do, why they should trust you, and how to contact you.</p>',
+        '<h2>1. Start with one clear outcome statement</h2>',
+        '<p>Your hero headline should state the business result you deliver. Keep it simple and specific. Avoid generic claims like &quot;world-class solutions&quot;.</p>',
+        '<h2>2. Build proof close to the top</h2>',
+        '<p>Use measurable results, short testimonials, and recognizable client contexts. Place trust signals before the first major scroll break.</p>',
+        '<h2>3. Make the next step obvious</h2>',
+        '<p>Use one primary CTA with clear wording such as &quot;Book a discovery call&quot; or &quot;Get project estimate&quot;. Competing CTAs reduce action rate.</p>',
+        '<h2>4. Structure sections for scanning</h2>',
+        '<p>Decision-makers scan quickly. Use short headings, concise paragraphs, and visual grouping so users can understand your offer without reading every line.</p>',
+        '<h2>5. Optimize for mobile first</h2>',
+        '<p>Most first visits happen on mobile. Keep layouts lightweight, spacing consistent, and touch targets clear. Fast mobile UX directly improves lead quality.</p>',
+        '<h2>Conclusion</h2>',
+        '<p>A strong homepage is a sales tool, not a decoration layer. When structure and message are aligned to buyer intent, conversion improves without increasing ad spend.</p>'
+      ].join(''),
+      topStoriesTitle: 'Homepage UX Blueprint for Tanzanian Service Brands in 2026'
+    },
+    {
+      slug: '/blog/why-ai-generated-project-requests-break-down-in-real-delivery',
+      title: 'How to Scope Web Projects Without Budget Surprises',
+      category: 'Project Delivery',
+      readTime: '7 min read',
+      dateDisplay: '11.03.2026',
+      image: '/assets/images/blog/project-scope-without-surprises.svg',
+      description: 'A clear scoping method to reduce budget shocks, avoid rework, and keep project delivery predictable.',
+      body: [
+        '<p>Budget surprises usually happen before development starts. They come from unclear scope, missing assumptions, and features that were never prioritized against business value.</p>',
+        '<p>This article outlines a practical scoping method used by product and service teams to control cost and keep delivery stable.</p>',
+        '<h2>1. Define outcomes before features</h2>',
+        '<p>List the business outcomes first: leads, onboarding completion, faster support response, or operational efficiency. Features should exist only if they support those outcomes.</p>',
+        '<h2>2. Separate &quot;must-have&quot; from &quot;nice-to-have&quot;</h2>',
+        '<p>Create a strict MVP boundary. If everything is marked critical, project risk rises and budget control disappears.</p>',
+        '<h2>3. Write acceptance criteria for every major item</h2>',
+        '<p>Acceptance criteria prevent interpretation gaps between design, development, and stakeholders. This is one of the highest-impact steps for avoiding rework.</p>',
+        '<h2>4. Add dependency and risk notes</h2>',
+        '<p>Document external APIs, legal approvals, and content readiness. Most timeline slips come from hidden dependencies, not coding speed.</p>',
+        '<h2>5. Use phased delivery</h2>',
+        '<p>Break work into discovery, design, build, and stabilization phases. Each phase should have clear outputs and decision gates.</p>',
+        '<h2>Conclusion</h2>',
+        '<p>Predictable projects are scoped with discipline. Clear priorities, defined acceptance criteria, and phased execution reduce budget volatility and improve delivery confidence.</p>'
+      ].join(''),
+      topStoriesTitle: 'How to Scope Web Projects Without Budget Surprises'
+    },
+    {
+      slug: '/blog/branding-statistics',
+      title: 'SEO + UX Checklist for Faster B2B Lead Generation',
+      category: 'SEO & UX',
+      readTime: '9 min read',
+      dateDisplay: '11.03.2026',
+      image: '/assets/images/blog/seo-ux-checklist-b2b.svg',
+      description: 'A practical checklist combining SEO and UX improvements that help B2B teams attract and convert better leads.',
+      body: [
+        '<p>SEO drives visits, UX drives action. If these two areas are treated separately, performance stalls. The best results come from aligning search intent with page experience.</p>',
+        '<p>Use this checklist to improve lead generation quality without rebuilding your full website.</p>',
+        '<h2>1. Match intent to page structure</h2>',
+        '<p>Each core page should target one main search intent and one clear conversion action. Mixed intent pages confuse both users and search engines.</p>',
+        '<h2>2. Improve page speed and stability</h2>',
+        '<p>Slow pages reduce both rankings and conversion. Compress assets, remove heavy scripts, and keep layout shift low on mobile.</p>',
+        '<h2>3. Strengthen headline hierarchy</h2>',
+        '<p>Your H1 should express value clearly. H2 sections should answer common buyer questions: process, pricing, results, and timeline.</p>',
+        '<h2>4. Add proof near high-intent sections</h2>',
+        '<p>Place trust elements near CTAs: short case outcomes, client testimonials, and project snapshots.</p>',
+        '<h2>5. Audit internal links</h2>',
+        '<p>Support user journeys with contextual links between services, case studies, and contact actions. Better link paths improve both crawl flow and conversion flow.</p>',
+        '<h2>Conclusion</h2>',
+        '<p>Lead growth improves when SEO and UX are built as one system. Start with intent mapping, speed, clarity, and trust placement, then iterate using real user behavior.</p>'
+      ].join(''),
+      topStoriesTitle: 'SEO + UX Checklist for Faster B2B Lead Generation'
+    }
+  ];
+
+  function setMetaByName(name, content) {
+    const node = document.querySelector('meta[name="' + name + '"]');
+    if (node) node.setAttribute('content', content);
+  }
+
+  function setMetaByProperty(name, content) {
+    const node = document.querySelector('meta[property="' + name + '"]');
+    if (node) node.setAttribute('content', content);
+  }
+
+  function setCoverImageOnFeedItem(item, imageUrl) {
+    if (!item) return;
+    const img = item.querySelector('img.image-15, .home-blog-card__img');
+    if (img) {
+      img.setAttribute('src', imageUrl);
+      img.setAttribute('alt', 'Blog cover');
+    }
+    const banner = item.querySelector('.blog-feed_block-feed-item-banner-wrapper.article-feed');
+    if (banner) {
+      banner.style.backgroundImage = 'url("' + imageUrl + '")';
+    }
+  }
+
+  function refreshHomepageBlogCards() {
+    const cards = document.querySelectorAll('.home-blog-cards .home-blog-collection-item');
+    if (!cards.length) return;
+    cards.forEach(function (item, index) {
+      if (index >= newBlogPosts.length) {
+        item.remove();
+        return;
+      }
+      const post = newBlogPosts[index];
+      setCoverImageOnFeedItem(item, post.image);
+      const title = item.querySelector('.home-blog-card__title');
+      if (title) title.textContent = post.title;
+      const read = item.querySelector('.home-blog-card__reading-duration');
+      if (read) read.textContent = post.readTime;
+      const link = item.querySelector('.home-blog-link-overlay');
+      if (link) link.setAttribute('href', post.slug);
+      const tag = item.querySelector('.paragraph-16');
+      if (tag) tag.textContent = post.category;
+    });
+  }
+
+  function refreshBlogIndexCards() {
+    if (!window.location || window.location.pathname.indexOf('/blog') !== 0) return;
+    const path = window.location.pathname || '';
+    if (path !== '/blog' && path !== '/blog/') return;
+    const items = document.querySelectorAll('.blog-feed_block-feed-cms-list .blog-feed_block-feed-cms-item');
+    if (!items.length) return;
+    items.forEach(function (item, index) {
+      if (index >= newBlogPosts.length) {
+        item.remove();
+        return;
+      }
+      const post = newBlogPosts[index];
+      const link = item.querySelector('a.blog-feed_block-feed-item');
+      if (link) link.setAttribute('href', post.slug);
+      setCoverImageOnFeedItem(item, post.image);
+      const tags = item.querySelectorAll('.blog-feed_block-feed-item-tag');
+      if (tags[0]) tags[0].textContent = post.category;
+      if (tags[1]) tags[1].textContent = post.dateDisplay;
+      const read = item.querySelector('.blog-feed_block-feed-item-read-time');
+      if (read) read.textContent = post.readTime;
+      const title = item.querySelector('.blog-feed_block-feed-item-title');
+      if (title) title.textContent = post.title;
+      const author = item.querySelector('.blog-feed_block-fiid-item-author-name');
+      if (author) author.textContent = 'Eliah Hango';
+    });
+  }
+
+  function refreshBlogArticlePage() {
+    if (!window.location) return;
+    const path = window.location.pathname || '';
+    const post = newBlogPosts.find(function (item) {
+      return item.slug === path;
+    });
+    if (!post) return;
+
+    document.title = post.title;
+    setMetaByName('description', post.description);
+    setMetaByProperty('og:title', post.title);
+    setMetaByProperty('og:description', post.description);
+    setMetaByProperty('og:image', post.image);
+    setMetaByProperty('twitter:title', post.title);
+    setMetaByProperty('twitter:description', post.description);
+    setMetaByProperty('twitter:image', post.image);
+
+    const heroBg = document.querySelector('.section_article-hero-bg');
+    if (heroBg) {
+      heroBg.setAttribute('src', post.image);
+      heroBg.removeAttribute('srcset');
+      heroBg.removeAttribute('sizes');
+    }
+
+    const articleTitle = document.querySelector('.article-title');
+    if (articleTitle) articleTitle.textContent = post.title;
+    const breadLast = document.querySelector('.breadcrumbs_link.is-current.is-third');
+    if (breadLast) breadLast.textContent = post.title;
+    const cat = document.querySelector('.article-hero_category-label');
+    if (cat) cat.textContent = post.category;
+    const read = document.querySelector('.article-hero_read-time');
+    if (read) read.textContent = post.readTime;
+    const readAside = document.querySelector('.article_table-content-read-time');
+    if (readAside) readAside.textContent = post.readTime;
+
+    const dateRows = document.querySelectorAll('.article-author_post-date-warpper');
+    dateRows.forEach(function (row) {
+      const cells = row.querySelectorAll('div');
+      if (cells.length < 2) return;
+      const label = normalizeText(cells[0].textContent);
+      if (label.indexOf('posted') !== -1 || label.indexOf('updated') !== -1) {
+        cells[1].textContent = post.dateDisplay;
+      }
+    });
+
+    const richText = document.querySelector('.article-content_rich-text.w-richtext');
+    if (richText) richText.innerHTML = post.body;
+
+    const stories = document.querySelectorAll('.section_article-stories .blog-feed_block-feed-cms-item');
+    stories.forEach(function (item, index) {
+      if (index >= newBlogPosts.length) {
+        item.remove();
+        return;
+      }
+      const story = newBlogPosts[index];
+      const link = item.querySelector('a.blog-feed_block-feed-item');
+      if (link) link.setAttribute('href', story.slug);
+      setCoverImageOnFeedItem(item, story.image);
+      const tags = item.querySelectorAll('.blog-feed_block-feed-item-tag');
+      if (tags[0]) tags[0].textContent = story.category;
+      if (tags[1]) tags[1].textContent = story.dateDisplay;
+      const readTime = item.querySelector('.blog-feed_block-feed-item-read-time');
+      if (readTime) readTime.textContent = story.readTime;
+      const title = item.querySelector('.blog-feed_block-feed-item-title');
+      if (title) title.textContent = story.topStoriesTitle || story.title;
+    });
+  }
+
+  function refreshBlogContent() {
+    refreshHomepageBlogCards();
+    refreshBlogIndexCards();
+    refreshBlogArticlePage();
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       ensureWebflowIxClassFallback();
@@ -833,6 +1059,7 @@
       enforceAboutTanzaniaOnlyLocations();
       redesignHomeResultsSection();
       rewriteHomePageCopy();
+      refreshBlogContent();
       scheduleInject(250);
       scheduleInject(1200);
       setTimeout(replaceFooterLocations, 250);
@@ -848,6 +1075,7 @@
       setTimeout(enforceAboutTanzaniaOnlyLocations, 250);
       setTimeout(redesignHomeResultsSection, 250);
       setTimeout(rewriteHomePageCopy, 250);
+      setTimeout(refreshBlogContent, 250);
     });
   } else {
     ensureWebflowIxClassFallback();
@@ -867,6 +1095,7 @@
     enforceAboutTanzaniaOnlyLocations();
     redesignHomeResultsSection();
     rewriteHomePageCopy();
+    refreshBlogContent();
     scheduleInject(250);
     scheduleInject(1200);
     setTimeout(replaceFooterLocations, 250);
@@ -882,6 +1111,7 @@
     setTimeout(enforceAboutTanzaniaOnlyLocations, 250);
     setTimeout(redesignHomeResultsSection, 250);
     setTimeout(rewriteHomePageCopy, 250);
+    setTimeout(refreshBlogContent, 250);
   }
 
   window.addEventListener('load', function () {
@@ -919,6 +1149,7 @@
       setTimeout(enforceAboutTanzaniaOnlyLocations, 120);
       setTimeout(redesignHomeResultsSection, 120);
       setTimeout(rewriteHomePageCopy, 120);
+      setTimeout(refreshBlogContent, 120);
     }
   }, { passive: true });
 })();

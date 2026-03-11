@@ -1,0 +1,24 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0A0814"/>
+      <stop offset="0.52" stop-color="#2A1A6A"/>
+      <stop offset="1" stop-color="#4E2AA8"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1280 210) rotate(136) scale(520 320)">
+      <stop stop-color="#E5B6FF" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#E5B6FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#halo)"/>
+  <rect x="86" y="180" width="640" height="510" rx="26" fill="#111327" fill-opacity="0.72" stroke="#6A5BEA"/>
+  <rect x="132" y="245" width="545" height="22" rx="11" fill="#2C315B"/>
+  <rect x="132" y="300" width="460" height="22" rx="11" fill="#2C315B"/>
+  <rect x="132" y="355" width="390" height="22" rx="11" fill="#2C315B"/>
+  <rect x="132" y="430" width="220" height="58" rx="18" fill="#8A5BFF"/>
+  <text x="385" y="300" fill="#EEF0FF" font-family="Poppins, Arial, sans-serif" font-size="70" font-weight="700">Scope Projects</text>
+  <text x="385" y="386" fill="#EEF0FF" font-family="Poppins, Arial, sans-serif" font-size="70" font-weight="700">Without Surprises</text>
+  <text x="385" y="472" fill="#C9BEFF" font-family="Poppins, Arial, sans-serif" font-size="40" font-weight="500">Budget clarity from day one</text>
+  <text x="385" y="548" fill="#9D8AFF" font-family="Poppins, Arial, sans-serif" font-size="30" font-weight="600">EliTechWiz Delivery Playbook</text>
+</svg>
