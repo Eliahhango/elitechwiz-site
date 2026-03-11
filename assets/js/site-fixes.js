@@ -572,6 +572,81 @@
     if (swiper) swiper.style.display = 'none';
   }
 
+  function buildAboutLocationCard(title, code, address) {
+    const card = document.createElement('div');
+    card.className = 'location_card location_trigger';
+
+    const top = document.createElement('div');
+    top.className = 'location_card-top';
+
+    const name = document.createElement('p');
+    name.className = 'location_card-name';
+    name.textContent = title;
+
+    const info = document.createElement('div');
+    info.className = 'location_card-info';
+
+    const abbr = document.createElement('p');
+    abbr.className = 'location_card-country-abbr';
+    abbr.textContent = code;
+
+    const flagWrap = document.createElement('div');
+    flagWrap.className = 'location_card-flag-wrapper';
+
+    const flag = document.createElement('img');
+    flag.className = 'location_card-flag';
+    flag.loading = 'lazy';
+    flag.alt = 'tanzania flag';
+    flag.src = 'https://flagcdn.com/w40/tz.png';
+
+    flagWrap.appendChild(flag);
+    info.appendChild(abbr);
+    info.appendChild(flagWrap);
+    top.appendChild(name);
+    top.appendChild(info);
+
+    const desc = document.createElement('p');
+    desc.className = 'location_card-address';
+    desc.textContent = address;
+
+    card.appendChild(top);
+    card.appendChild(desc);
+    return card;
+  }
+
+  function enforceAboutTanzaniaOnlyLocations() {
+    if (!window.location || window.location.pathname.indexOf('/about') !== 0) return;
+
+    const mapInteractive = document.querySelector('.cp-location_map-wrapper.is-interactive');
+    if (mapInteractive) {
+      mapInteractive.style.display = 'none';
+    }
+
+    const tags = document.querySelector('.location_tags');
+    if (tags) {
+      tags.remove();
+    }
+
+    const grid = document.querySelector('.cp-location_locations-grid');
+    if (!grid) return;
+
+    grid.innerHTML = '';
+    grid.appendChild(
+      buildAboutLocationCard(
+        'Tanzania - Dar es Salaam',
+        'TZ',
+        'Posta, Kivukoni, Dar es Salaam, Tanzania'
+      )
+    );
+    grid.appendChild(
+      buildAboutLocationCard(
+        'Tanzania - Kibaha, Pwani',
+        'TZ',
+        'Mailimoja Area, Kibaha, Pwani, Tanzania'
+      )
+    );
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       ensureWebflowIxClassFallback();
@@ -588,6 +663,7 @@
       injectCustomReviews();
       replacePartnerLogosAndTestimonials();
       replacePricingComparison();
+      enforceAboutTanzaniaOnlyLocations();
       scheduleInject(250);
       scheduleInject(1200);
       setTimeout(replaceFooterLocations, 250);
@@ -600,6 +676,7 @@
       setTimeout(injectCustomReviews, 250);
       setTimeout(replacePartnerLogosAndTestimonials, 250);
       setTimeout(replacePricingComparison, 250);
+      setTimeout(enforceAboutTanzaniaOnlyLocations, 250);
     });
   } else {
     ensureWebflowIxClassFallback();
@@ -616,6 +693,7 @@
     injectCustomReviews();
     replacePartnerLogosAndTestimonials();
     replacePricingComparison();
+    enforceAboutTanzaniaOnlyLocations();
     scheduleInject(250);
     scheduleInject(1200);
     setTimeout(replaceFooterLocations, 250);
@@ -628,6 +706,7 @@
     setTimeout(injectCustomReviews, 250);
     setTimeout(replacePartnerLogosAndTestimonials, 250);
     setTimeout(replacePricingComparison, 250);
+    setTimeout(enforceAboutTanzaniaOnlyLocations, 250);
   }
 
   window.addEventListener('load', function () {
@@ -662,6 +741,7 @@
       setTimeout(injectCustomReviews, 120);
       setTimeout(replacePartnerLogosAndTestimonials, 120);
       setTimeout(replacePricingComparison, 120);
+      setTimeout(enforceAboutTanzaniaOnlyLocations, 120);
     }
   }, { passive: true });
 })();
