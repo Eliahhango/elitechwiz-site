@@ -1,0 +1,25 @@
+﻿<svg xmlns='http://www.w3.org/2000/svg' width='1600' height='900' viewBox='0 0 1600 900' fill='none'>
+  <defs>
+    <linearGradient id='bg' x1='0' y1='0' x2='1600' y2='900' gradientUnits='userSpaceOnUse'>
+      <stop offset='0' stop-color='#071B2C'/>
+      <stop offset='1' stop-color='#0F4E73'/>
+    </linearGradient>
+    <radialGradient id='g1' cx='0' cy='0' r='1' gradientUnits='userSpaceOnUse' gradientTransform='translate(1280 180) rotate(130) scale(520 320)'>
+      <stop stop-color='#55E4FF' stop-opacity='0.42'/>
+      <stop offset='1' stop-color='#55E4FF' stop-opacity='0'/>
+    </radialGradient>
+  </defs>
+  <rect width='1600' height='900' fill='url(#bg)'/>
+  <rect width='1600' height='900' fill='url(#g1)'/>
+  <circle cx='280' cy='760' r='250' fill='#55E4FF' fill-opacity='0.22'/>
+  <rect x='980' y='140' width='460' height='620' rx='30' fill='rgba(255,255,255,.07)' stroke='rgba(255,255,255,.25)'/>
+  <rect x='1040' y='230' width='340' height='18' rx='9' fill='rgba(255,255,255,.22)'/>
+  <rect x='1040' y='278' width='280' height='18' rx='9' fill='rgba(255,255,255,.18)'/>
+  <rect x='1040' y='360' width='330' height='12' rx='6' fill='rgba(255,255,255,.24)'/>
+  <rect x='1040' y='392' width='280' height='12' rx='6' fill='rgba(255,255,255,.18)'/>
+  <rect x='1040' y='424' width='230' height='12' rx='6' fill='rgba(255,255,255,.15)'/>
+  <rect x='1040' y='520' width='170' height='46' rx='12' fill='#55E4FF' fill-opacity='.32'/>
+  <text x='100' y='350' fill='white' font-family='Poppins, Arial, sans-serif' font-size='82' font-weight='700'>Cloud Security</text>
+  <text x='100' y='430' fill='rgba(255,255,255,.86)' font-family='Poppins, Arial, sans-serif' font-size='40' font-weight='500'>Identity controls and workload protection</text>
+  <text x='100' y='510' fill='rgba(255,255,255,.72)' font-family='Poppins, Arial, sans-serif' font-size='30' font-weight='500'>EliTechWiz Specialist Service Page</text>
+</svg>

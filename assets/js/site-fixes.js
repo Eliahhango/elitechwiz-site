@@ -144,7 +144,39 @@
       '.elite-service-page-cyber .services-hero_heading-wrapper .is-italic{color:#73ffe0;}',
       '.elite-service-page-civil .services-hero_heading-wrapper .is-italic{color:#9fcbff;}',
       '.elite-service-page .services-benefits_card-list-item{font-weight:600;}',
-      '.elite-service-page .faq_item-question{font-weight:700;}'
+      '.elite-service-page .faq_item-question{font-weight:700;}',
+      '.elite-service-wrap{width:min(1240px,calc(100% - 40px));margin:0 auto;}',
+      '.elite-service-hero{padding:clamp(34px,5vw,72px) 0;background:linear-gradient(160deg,#070d20,#0f2455 50%,#1a3f84);}',
+      '.elite-service-hero .elite-service-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center;}',
+      '.elite-service-breadcrumbs{font-size:13px;color:rgba(229,236,255,.7);margin-bottom:14px;}',
+      '.elite-service-breadcrumbs a{color:#bdd6ff;text-decoration:none;}',
+      '.elite-service-chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}',
+      '.elite-service-chips .hero_title-tag{padding:8px 12px;border-radius:999px;color:#eaf3ff;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;}',
+      '.elite-service-copy h1{margin:0 0 10px;font-size:clamp(38px,5.6vw,72px);line-height:.95;color:#fff;font-weight:800;}',
+      '.elite-service-copy h1 em{font-style:normal;color:#8ec5ff;}',
+      '.elite-service-copy h2{margin:0 0 14px;color:#d7e6ff;font-size:clamp(22px,2.2vw,34px);line-height:1.15;font-weight:600;}',
+      '.elite-service-copy p{margin:0 0 22px;color:#c6d7f5;font-size:clamp(16px,1.25vw,20px);line-height:1.55;}',
+      '.elite-service-visual img{width:100%;border-radius:26px;border:1px solid rgba(167,191,255,.42);box-shadow:0 20px 45px rgba(1,8,30,.45);}',
+      '.elite-service-kpis{padding:26px 0;background:#070b18;}',
+      '.elite-service-kpi-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}',
+      '.elite-service-kpi{padding:20px;border-radius:16px;background:#0f1830;border:1px solid #25355f;}',
+      '.elite-service-kpi h3{margin:0 0 10px;color:#9ed3ff;font-size:34px;line-height:1;font-weight:800;}',
+      '.elite-service-kpi p{margin:0;color:#dbe8ff;font-size:15px;line-height:1.5;}',
+      '.elite-service-blocks,.elite-service-process,.elite-service-faq,.elite-service-cta{padding:34px 0;background:#070b18;}',
+      '.elite-service-blocks .elite-service-wrap{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}',
+      '.elite-service-panel{padding:22px;border-radius:18px;background:#111a33;border:1px solid #27385f;}',
+      '.elite-service-panel h3,.elite-service-process h3,.elite-service-faq h3,.elite-service-cta h3{margin:0 0 12px;color:#fff;font-size:30px;font-weight:760;}',
+      '.elite-service-panel ul{margin:0;padding-left:20px;display:grid;gap:9px;}',
+      '.elite-service-panel li{color:#cbdcff;font-size:16px;line-height:1.5;}',
+      '.elite-service-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;}',
+      '.elite-service-step{padding:18px;border-radius:14px;background:#111a33;border:1px solid #27385f;}',
+      '.elite-service-step span{display:inline-block;margin-bottom:8px;color:#8ed0ff;font-size:12px;font-weight:800;letter-spacing:.08em;}',
+      '.elite-service-step p{margin:0;color:#d8e7ff;font-size:15px;line-height:1.45;}',
+      '.elite-service-faq-item{margin:0 0 10px;padding:14px 16px;border-radius:12px;background:#111a33;border:1px solid #27385f;}',
+      '.elite-service-faq-item summary{cursor:pointer;color:#fff;font-size:17px;font-weight:700;}',
+      '.elite-service-faq-item p{margin:10px 0 0;color:#cfe0ff;font-size:15px;line-height:1.55;}',
+      '.elite-service-cta p{margin:0 0 18px;color:#cbdcff;font-size:17px;line-height:1.55;max-width:72ch;}',
+      '@media (max-width:991px){.elite-service-hero .elite-service-wrap{grid-template-columns:1fr;}.elite-service-kpi-grid,.elite-service-blocks .elite-service-wrap,.elite-service-steps{grid-template-columns:1fr;}.elite-service-copy h1{font-size:42px;}.elite-service-panel h3,.elite-service-process h3,.elite-service-faq h3,.elite-service-cta h3{font-size:24px;}}'
     ].join('');
     document.head.appendChild(style);
     styleInjected = true;
@@ -1164,6 +1196,63 @@
     setNodeText(document.querySelector('.services-cta_text'), data.ctaText);
   }
 
+  const deepServicePages = {
+    '/services/penetration-testing': {title:'Penetration Testing Services | EliTechWiz',description:'Penetration testing services that uncover exploitable weaknesses and provide prioritized remediation.',theme:'cyber',image:'/assets/images/services/penetration-testing-hero.svg',headline:'Penetration Testing',subheadline:'Simulate real attacks and close exploitable gaps before incidents happen.',deep:'We run controlled offensive testing across web apps, APIs, cloud and internal environments. You receive evidence-backed findings, business impact mapping, and a remediation order your engineers can execute immediately.',chips:['Web App','API','Cloud','Internal Network'],kpis:[['97%','Critical findings include validated exploit paths'],['72h','High-priority guidance delivery target'],['3x','Faster issue closure with fix workshops']],focus:['Authentication and authorization abuse testing','Business logic exploitation and chaining','Privilege escalation and lateral movement paths','Retest-based closure validation'],deliver:['Executive summary with risk narrative','Technical report with proof-of-concept details','Prioritized remediation backlog','Developer remediation workshop'],process:['Scope and threat modeling','Manual exploitation and evidence capture','Risk prioritization and reporting','Retest and closure confirmation'],faq:[['How often should we run penetration testing?','At least annually and after major releases, architecture changes, or new integrations.'],['Do you help us fix findings?','Yes. We provide fix guidance and retest support until critical gaps are closed.']]},
+    '/services/network-security': {title:'Network Security Services | EliTechWiz',description:'Network security services for segmentation, monitoring, and resilient access control architecture.',theme:'cyber',image:'/assets/images/services/network-security-hero.svg',headline:'Network Security',subheadline:'Reduce attack surface and strengthen network resilience.',deep:'We harden network architecture with segmentation, policy control, and monitoring improvements that make lateral movement harder and incidents easier to detect.',chips:['Segmentation','Firewall','Zero Trust','Monitoring'],kpis:[['60%','Reduction in unnecessary open access paths'],['99.9%','Improved continuity architecture target'],['24/7','Monitoring strategy readiness']],focus:['Network topology and exposure review','Access policy and firewall optimization','Detection and alerting use-case design','Resilience controls for critical systems'],deliver:['Architecture risk assessment','Hardening roadmap with owners','Detection and response recommendations','Implementation support with IT team'],process:['Baseline mapping','Control gap analysis','Hardening rollout','Validation and optimization'],faq:[['Can you secure hybrid environments?','Yes. We support on-prem, cloud, and mixed environments.'],['Will this disrupt operations?','We use phased rollout and validation windows to reduce impact.']]},
+    '/services/cybersecurity-consulting': {title:'Cybersecurity Consulting Services | EliTechWiz',description:'Cybersecurity consulting services for governance, strategy, and execution-driven risk reduction.',theme:'cyber',image:'/assets/images/services/cybersecurity-consulting-hero.svg',headline:'Cybersecurity Consulting',subheadline:'Align security strategy with real business risk and execution.',deep:'We help leadership and engineering teams build security programs that are practical, measurable, and sustainable. From governance and policy to roadmap execution, we turn security intent into accountable delivery.',chips:['Governance','Risk','Compliance','Execution'],kpis:[['4-8 wks','Initial roadmap delivery timeline'],['100%','Security initiatives tied to business priorities'],['Clear','Control ownership matrix per workstream']],focus:['Security maturity baseline and gap review','Risk-prioritized roadmap creation','Policy and control architecture design','Advisory support for implementation'],deliver:['Maturity assessment report','Risk-priority roadmap','Control ownership matrix','Quarterly execution review pack'],process:['Discovery','Risk workshops','Roadmap design','Governance cadence'],faq:[['Who should engage this service?','CTOs, founders, and operations leaders needing practical security direction.'],['Do you support compliance readiness?','Yes. We map controls and support evidence workflows.']]},
+    '/services/cloud-security': {title:'Cloud Security Services | EliTechWiz',description:'Cloud security services for identity hardening, workload protection, and continuous risk control.',theme:'cyber',image:'/assets/images/services/cloud-security-hero.svg',headline:'Cloud Security',subheadline:'Secure cloud growth with stronger identity and workload controls.',deep:'We reduce cloud misconfiguration risk, enforce least privilege, and improve runtime visibility so your cloud stack scales without exposing high-risk security debt.',chips:['IAM','Workloads','CSPM','Compliance'],kpis:[['65%','Average misconfiguration risk reduction'],['90%','High-risk access paths remediated'],['24/7','Cloud monitoring strategy coverage']],focus:['Identity and access redesign','Configuration hardening and policy guardrails','Runtime security for workloads','Cloud logging and response readiness'],deliver:['Cloud posture assessment','Prioritized hardening plan','Control implementation guide','Validation and retest report'],process:['Assessment','Identity/config hardening','Monitoring rollout','Validation cycle'],faq:[['Do you support multi-cloud?','Yes. We support single and multi-cloud control strategies.'],['Can you work with existing DevOps teams?','Yes. We collaborate directly with your platform teams.']]},
+    '/services/security-audits': {title:'Security Audit Services | EliTechWiz',description:'Security audit services to assess control effectiveness and prioritize remediation by risk.',theme:'cyber',image:'/assets/images/services/security-audits-hero.svg',headline:'Security Audits',subheadline:'Get a clear control-gap picture and a practical remediation roadmap.',deep:'Our audits evaluate technical and operational controls with clear severity logic. We eliminate noise and focus your team on fixes that materially lower business risk.',chips:['Control Review','Gap Analysis','Risk Scoring','Roadmap'],kpis:[['2-6 wks','Typical audit duration by scope'],['Dual','Executive + technical reporting tracks'],['Actionable','Findings mapped to ownership and timeline']],focus:['Configuration and policy control review','Identity and access governance checks','Incident readiness assessment','Risk-ranked remediation planning'],deliver:['Control gap report','Executive findings brief','Technical remediation backlog','Follow-up validation options'],process:['Scope','Evidence collection','Validation and scoring','Remediation planning'],faq:[['How is this different from pentesting?','Audits assess broad control posture; pentesting validates exploitable weaknesses.'],['Do you offer remediation support?','Yes. We support fix tracking and follow-up validation.']]},
+    '/services/structural-design': {title:'Structural Design Services | EliTechWiz',description:'Structural design services for safe, efficient, and code-aligned building systems.',theme:'civil',image:'/assets/images/services/structural-design-hero.svg',headline:'Structural Design',subheadline:'Build-ready structural engineering with safety and efficiency in balance.',deep:'We design structural systems for residential, commercial, and mixed-use projects with strong constructability and compliance outcomes. Our work targets durability, efficiency, and execution confidence.',chips:['Concrete','Steel','Mixed Systems','Compliance'],kpis:[['100%','Design package compliance checks'],['30%','Component optimization potential'],['Low','Construction-stage design conflicts']],focus:['Load path and stability analysis','Member sizing and detailing quality','Code-compliance engineering checks','Cross-discipline coordination support'],deliver:['Structural calculations and reports','Drawing and detailing packages','Material and sizing schedules','Construction support clarifications'],process:['Concept strategy','Detailed analysis','Documentation and review','Construction support'],faq:[['Can you optimize for cost without compromising safety?','Yes. We optimize materials and member sizing while preserving full safety standards.'],['Do you support retrofit projects?','Yes. We assess existing systems and provide reinforced redesign options.']]},
+    '/services/construction-management': {title:'Construction Management Services | EliTechWiz',description:'Construction management services for schedule control, quality assurance, and delivery reliability.',theme:'civil',image:'/assets/images/services/construction-management-hero.svg',headline:'Construction Management',subheadline:'Control delivery timelines and reduce execution risk across project phases.',deep:'We manage planning, coordination, quality gates, and reporting so project stakeholders stay aligned and key milestones remain predictable.',chips:['Planning','Coordination','Quality','Reporting'],kpis:[['On-time','Milestone governance and tracking'],['High','Visibility across dependencies'],['Reduced','Rework via quality gates']],focus:['Master schedule governance','Vendor/subcontractor alignment','Site quality and progress controls','Risk and issue escalation management'],deliver:['Execution governance structure','Progress and risk dashboards','Quality gate checklist framework','Handover readiness support'],process:['Planning baseline','Execution monitoring','Risk mitigation loop','Closure and handover'],faq:[['Can you join mid-project?','Yes. We can stabilize ongoing projects with structured control workflows.'],['How often do you report progress?','Weekly and milestone-based reporting cycles are available.']]},
+    '/services/infrastructure-planning': {title:'Infrastructure Planning Services | EliTechWiz',description:'Infrastructure planning services for resilient civil systems and scalable long-term growth.',theme:'civil',image:'/assets/images/services/infrastructure-planning-hero.svg',headline:'Infrastructure Planning',subheadline:'Plan infrastructure systems for resilience, scale, and long-term value.',deep:'We combine feasibility, capacity forecasting, and phasing strategy to build infrastructure plans that are technically sound and implementation-ready.',chips:['Feasibility','Utilities','Capacity','Phasing'],kpis:[['Strategic','Roadmaps tied to long-term growth'],['Lower','Rework risk via early planning'],['Clear','Phase-by-phase implementation logic']],focus:['Demand and capacity modeling','Utility and access strategy','Phasing and constructability planning','Dependency and risk analysis'],deliver:['Planning baseline report','Option studies and concept layouts','Phased implementation roadmap','Stakeholder-ready documentation'],process:['Needs analysis','Option modeling','Preferred concept','Roadmap and governance'],faq:[['Do you plan for expansion scenarios?','Yes. Scalability is built into our planning models.'],['Can you support public/private project contexts?','Yes. We adapt deliverables to governance and stakeholder requirements.']]},
+    '/services/cad-bim-services': {title:'CAD and BIM Services | EliTechWiz',description:'CAD and BIM services for coordinated models, clash reduction, and construction-ready documentation.',theme:'civil',image:'/assets/images/services/cad-bim-services-hero.svg',headline:'CAD and BIM Services',subheadline:'Coordinate disciplines faster with precise digital engineering models.',deep:'We produce clean, coordinated CAD/BIM outputs that reduce design conflicts and improve construction readiness. Model quality, revision control, and issue tracking are central to our process.',chips:['3D Modeling','Coordination','Clash Detection','Documentation'],kpis:[['Fewer','Site conflicts through pre-build detection'],['Faster','Review cycles from coordinated workflows'],['Traceable','Version-controlled updates']],focus:['Multidisciplinary modeling and QA','Federated model coordination','Clash detection and issue resolution','Drawing extraction and documentation quality'],deliver:['CAD drawings and detail sheets','BIM model package','Clash report and issue log','Revision and handover records'],process:['Model setup','Coordination cycles','Clash resolution','Final documentation handover'],faq:[['Can you convert 2D files to BIM models?','Yes. We convert legacy drawings into structured BIM models.'],['Do you include construction documentation?','Yes. We deliver model-linked sheets and execution-ready details.']]},
+    '/services/environmental-engineering': {title:'Environmental Engineering Services | EliTechWiz',description:'Environmental engineering services for sustainable planning, compliance readiness, and resilient project delivery.',theme:'civil',image:'/assets/images/services/environmental-engineering-hero.svg',headline:'Environmental Engineering',subheadline:'Deliver sustainable projects with practical, compliance-aware engineering.',deep:'We integrate environmental risk control into planning and execution so projects remain compliant, resilient, and aligned with long-term sustainability goals.',chips:['Sustainability','Compliance','Impact','Resilience'],kpis:[['Lower','Environmental risk through early mitigation'],['Stronger','Compliance readiness and evidence trail'],['Practical','Action plans aligned to project constraints']],focus:['Impact and risk assessment','Mitigation strategy development','Compliance-focused documentation','Monitoring and performance planning'],deliver:['Environmental baseline report','Mitigation roadmap','Compliance documentation package','Monitoring framework and review plan'],process:['Baseline assessment','Risk prioritization','Mitigation and controls','Monitoring and adjustment'],faq:[['Do you support compliance planning?','Yes. We support planning and documentation aligned to project requirements.'],['Can you work with site and engineering teams?','Yes. We collaborate across design, execution, and operations stakeholders.']]}
+  };
+
+  function rewriteServicePagesDeep() {
+    if (!window.location) return;
+    const path = window.location.pathname || '';
+    const data = deepServicePages[path];
+    if (!data) return;
+
+    const main = document.querySelector('main.page-main');
+    if (!main) return;
+
+    document.body.classList.add('elite-service-page');
+    document.body.classList.add(data.theme === 'cyber' ? 'elite-service-page-cyber' : 'elite-service-page-civil');
+    document.title = data.title;
+    setMetaByName('description', data.description);
+    setMetaByProperty('og:title', data.title);
+    setMetaByProperty('twitter:title', data.title);
+    setMetaByProperty('og:description', data.description);
+    setMetaByProperty('twitter:description', data.description);
+    setMetaByProperty('og:image', data.image);
+    setMetaByProperty('twitter:image', data.image);
+
+    const chipHtml = data.chips.map(function (item) { return '<span class="hero_title-tag">' + item + '</span>'; }).join('');
+    const kpiHtml = data.kpis.map(function (item) { return '<article class="elite-service-kpi"><h3>' + item[0] + '</h3><p>' + item[1] + '</p></article>'; }).join('');
+    const focusHtml = data.focus.map(function (item) { return '<li>' + item + '</li>'; }).join('');
+    const deliverHtml = data.deliver.map(function (item) { return '<li>' + item + '</li>'; }).join('');
+    const processHtml = data.process.map(function (item, i) { return '<article class="elite-service-step"><span>0' + (i + 1) + '</span><p>' + item + '</p></article>'; }).join('');
+    const faqHtml = data.faq.map(function (item) { return '<details class="elite-service-faq-item"><summary>' + item[0] + '</summary><p>' + item[1] + '</p></details>'; }).join('');
+
+    main.innerHTML = [
+      '<section class="elite-service-hero"><div class="elite-service-wrap"><div class="elite-service-copy">',
+      '<div class="elite-service-breadcrumbs"><a href="/">Home</a> / <a href="/services">Services</a> / <span>' + data.headline + '</span></div>',
+      '<div class="elite-service-chips">' + chipHtml + '</div>',
+      '<h1><em>' + data.headline + '</em></h1>',
+      '<h2>' + data.subheadline + '</h2>',
+      '<p>' + data.deep + '</p>',
+      '<a href="/contact" class="button-primary w-inline-block"><div class="button-primary_arrow"></div><div class="button-primary_text-wrapper"><div class="button-primary_text">Book a Call</div></div></a>',
+      '</div><div class="elite-service-visual"><img src="' + data.image + '" alt="' + data.headline + ' visual"/></div></div></section>',
+      '<section class="elite-service-kpis"><div class="elite-service-wrap elite-service-kpi-grid">' + kpiHtml + '</div></section>',
+      '<section class="elite-service-blocks"><div class="elite-service-wrap"><article class="elite-service-panel"><h3>Core Focus Areas</h3><ul>' + focusHtml + '</ul></article><article class="elite-service-panel"><h3>What You Receive</h3><ul>' + deliverHtml + '</ul></article></div></section>',
+      '<section class="elite-service-process"><div class="elite-service-wrap"><h3>Delivery Process</h3><div class="elite-service-steps">' + processHtml + '</div></div></section>',
+      '<section class="elite-service-faq"><div class="elite-service-wrap"><h3>Frequently Asked Questions</h3>' + faqHtml + '</div></section>',
+      '<section class="elite-service-cta"><div class="elite-service-wrap"><h3>Need a scoped plan for ' + data.headline + '?</h3><p>Book a strategy call and we will map your current state, risk priorities, and implementation path with clear ownership.</p><a href="/contact" class="button-primary w-inline-block"><div class="button-primary_arrow"></div><div class="button-primary_text-wrapper"><div class="button-primary_text">Start Project Discussion</div></div></a></div></section>'
+    ].join('');
+  }
+
   const newBlogPosts = [
     {
       slug: '/blog/homepage-design',
@@ -1411,6 +1500,7 @@
       rewriteHomePageCopy();
       refreshBlogContent();
       rewriteServicePages();
+      rewriteServicePagesDeep();
       scheduleInject(250);
       scheduleInject(1200);
       setTimeout(replaceFooterLocations, 250);
@@ -1428,6 +1518,7 @@
       setTimeout(rewriteHomePageCopy, 250);
       setTimeout(refreshBlogContent, 250);
       setTimeout(rewriteServicePages, 250);
+      setTimeout(rewriteServicePagesDeep, 250);
     });
   } else {
     ensureWebflowIxClassFallback();
@@ -1449,6 +1540,7 @@
     rewriteHomePageCopy();
     refreshBlogContent();
     rewriteServicePages();
+    rewriteServicePagesDeep();
     scheduleInject(250);
     scheduleInject(1200);
     setTimeout(replaceFooterLocations, 250);
@@ -1466,6 +1558,7 @@
     setTimeout(rewriteHomePageCopy, 250);
     setTimeout(refreshBlogContent, 250);
     setTimeout(rewriteServicePages, 250);
+    setTimeout(rewriteServicePagesDeep, 250);
   }
 
   window.addEventListener('load', function () {
@@ -1505,6 +1598,7 @@
       setTimeout(rewriteHomePageCopy, 120);
       setTimeout(refreshBlogContent, 120);
       setTimeout(rewriteServicePages, 120);
+      setTimeout(rewriteServicePagesDeep, 120);
     }
   }, { passive: true });
 })();
