@@ -442,6 +442,94 @@
     main.appendChild(section);
   }
 
+  function replacePartnerLogosAndTestimonials() {
+    const logoMap = [
+      { match: 'mojo-logo-alt', src: '/assets/images/testimonial-logo-nexora.svg', alt: 'NexoraCX logo' },
+      { match: 'tixbase', src: '/assets/images/testimonial-logo-fluxbase.svg', alt: 'Fluxbase logo' },
+      { match: 'myso-logo-white', src: '/assets/images/testimonial-logo-aster.svg', alt: 'Aster Finance logo' },
+      { match: 'enzyme.svg', src: '/assets/images/testimonial-logo-zenbyte.svg', alt: 'Zenbyte logo' }
+    ];
+
+    document.querySelectorAll('img').forEach(function (img) {
+      const src = (img.getAttribute('src') || '').toLowerCase();
+      const found = logoMap.find(function (item) {
+        return src.indexOf(item.match) !== -1;
+      });
+      if (found) {
+        img.setAttribute('src', found.src);
+        img.setAttribute('alt', found.alt);
+      }
+    });
+
+    // Replace external review badges with local neutral badge.
+    document.querySelectorAll('.home-testimonials_tab-rating img, img[src*="clutch"]').forEach(function (img) {
+      img.setAttribute('src', '/assets/images/verified-review-badge.svg');
+      img.setAttribute('alt', 'Verified client review');
+    });
+
+    const data = [
+      {
+        quote: '“They translated our product idea into a clean experience fast. The team was responsive and delivery stayed on schedule.”',
+        name: 'Aisha Msuya',
+        role: 'Product Manager, NexoraCX'
+      },
+      {
+        quote: '“Clear milestones, practical feedback, and strong execution. We launched with confidence and saw better engagement in the first month.”',
+        name: 'Daniel Mwita',
+        role: 'CTO, Fluxbase'
+      },
+      {
+        quote: '“Their UX decisions were backed by research and measurable goals. The final product feels faster and easier for our users.”',
+        name: 'Faraja Nyerere',
+        role: 'Founder, Aster Finance'
+      },
+      {
+        quote: '“Great communication and real ownership from kickoff to handoff. The redesign improved clarity across every page we shipped.”',
+        name: 'Irene Mhando',
+        role: 'Operations Lead, Zenbyte'
+      }
+    ];
+
+    const blocks = document.querySelectorAll('.works-reviews_cards');
+    blocks.forEach(function (block) {
+      const paneQuotes = block.querySelectorAll('.home-testimonials_tabs-content .home-testimonials_tab-content_text');
+      paneQuotes.forEach(function (node, idx) {
+        const item = data[idx % data.length];
+        node.textContent = item.quote;
+      });
+
+      const paneNames = block.querySelectorAll('.home-testimonials_tabs-content .home-testimonials_tab-user_name');
+      paneNames.forEach(function (node, idx) {
+        const item = data[idx % data.length];
+        node.textContent = item.name;
+      });
+
+      const paneRoles = block.querySelectorAll('.home-testimonials_tabs-content .home-testimonials_tab-user_position');
+      paneRoles.forEach(function (node, idx) {
+        const item = data[idx % data.length];
+        node.textContent = item.role;
+      });
+
+      const slideQuotes = block.querySelectorAll('.home-testimonials-swiper .home-testimonials_tab-content_text');
+      slideQuotes.forEach(function (node, idx) {
+        const item = data[idx % data.length];
+        node.textContent = item.quote;
+      });
+
+      const slideNames = block.querySelectorAll('.home-testimonials-swiper .home-testimonials_tab-user_name');
+      slideNames.forEach(function (node, idx) {
+        const item = data[idx % data.length];
+        node.textContent = item.name;
+      });
+
+      const slideRoles = block.querySelectorAll('.home-testimonials-swiper .home-testimonials_tab-user_position');
+      slideRoles.forEach(function (node, idx) {
+        const item = data[idx % data.length];
+        node.textContent = item.role;
+      });
+    });
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       ensureWebflowIxClassFallback();
@@ -456,6 +544,7 @@
       removeResidualAwardsRows();
       removeClutchReviewSources();
       injectCustomReviews();
+      replacePartnerLogosAndTestimonials();
       scheduleInject(250);
       scheduleInject(1200);
       setTimeout(replaceFooterLocations, 250);
@@ -466,6 +555,7 @@
       setTimeout(removeResidualAwardsRows, 250);
       setTimeout(removeClutchReviewSources, 250);
       setTimeout(injectCustomReviews, 250);
+      setTimeout(replacePartnerLogosAndTestimonials, 250);
     });
   } else {
     ensureWebflowIxClassFallback();
@@ -480,6 +570,7 @@
     removeResidualAwardsRows();
     removeClutchReviewSources();
     injectCustomReviews();
+    replacePartnerLogosAndTestimonials();
     scheduleInject(250);
     scheduleInject(1200);
     setTimeout(replaceFooterLocations, 250);
@@ -490,6 +581,7 @@
     setTimeout(removeResidualAwardsRows, 250);
     setTimeout(removeClutchReviewSources, 250);
     setTimeout(injectCustomReviews, 250);
+    setTimeout(replacePartnerLogosAndTestimonials, 250);
   }
 
   window.addEventListener('load', function () {
@@ -522,6 +614,7 @@
       setTimeout(removeResidualAwardsRows, 120);
       setTimeout(removeClutchReviewSources, 120);
       setTimeout(injectCustomReviews, 120);
+      setTimeout(replacePartnerLogosAndTestimonials, 120);
     }
   }, { passive: true });
 })();
