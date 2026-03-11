@@ -228,32 +228,34 @@
 
   function injectSections() {
     ensureStyle();
+    // Rebuild every desktop services dropdown container directly.
+    const desktopContainers = document.querySelectorAll(
+      '.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-desktop-section.is-3-col'
+    );
+    desktopContainers.forEach(function (desktopContainer) {
+      desktopContainer.innerHTML = '';
+      desktopContainer.appendChild(createSection('Design', designLinks, true));
+      desktopContainer.appendChild(createSection('Development', developmentLinks, true));
+      desktopContainer.appendChild(createSection('Cybersecurity', cyberLinks, true));
+      desktopContainer.appendChild(createSection('Civil Engineering', civilLinks, true));
+    });
 
-    const dropdowns = document.querySelectorAll('.navbar_link-main.w-dropdown, .navbar_link-main.is-dekstop.w-dropdown');
+    // Rebuild every mobile services list by detecting known old services content.
+    const mobileLists = document.querySelectorAll('.navbar_dropmenu.w-dropdown-list');
+    mobileLists.forEach(function (mobileContainer) {
+      const lower = (mobileContainer.textContent || '').toLowerCase();
+      const looksLikeServicesMenu =
+        lower.indexOf('pitch deck') !== -1 ||
+        lower.indexOf('brand identity') !== -1 ||
+        lower.indexOf('ui/ux design') !== -1 ||
+        lower.indexOf('web development') !== -1;
+      if (!looksLikeServicesMenu) return;
 
-    dropdowns.forEach(function (dropdown) {
-      const titleNode = dropdown.querySelector('.navbar_dropdown-toggle .navbar_link-title');
-      if (!titleNode || titleNode.textContent.trim().toLowerCase() !== 'services') return;
-
-      const desktopContainer = dropdown.querySelector('.navbar_dropmenu-desktop-section.is-3-col');
-      if (desktopContainer) {
-        // Force services desktop columns to: Design, Development, Cybersecurity, Civil Engineering.
-        desktopContainer.innerHTML = '';
-        desktopContainer.appendChild(createSection('Design', designLinks, true));
-        desktopContainer.appendChild(createSection('Development', developmentLinks, true));
-        desktopContainer.appendChild(createSection('Cybersecurity', cyberLinks, true));
-        desktopContainer.appendChild(createSection('Civil Engineering', civilLinks, true));
-      }
-
-      const mobileContainer = dropdown.querySelector('.navbar_dropmenu.w-dropdown-list');
-      if (mobileContainer) {
-        // Keep mobile consistent too.
-        mobileContainer.innerHTML = '';
-        mobileContainer.appendChild(createSection('Design', designLinks, false));
-        mobileContainer.appendChild(createSection('Development', developmentLinks, false));
-        mobileContainer.appendChild(createSection('Cybersecurity', cyberLinks, false));
-        mobileContainer.appendChild(createSection('Civil Engineering', civilLinks, false));
-      }
+      mobileContainer.innerHTML = '';
+      mobileContainer.appendChild(createSection('Design', designLinks, false));
+      mobileContainer.appendChild(createSection('Development', developmentLinks, false));
+      mobileContainer.appendChild(createSection('Cybersecurity', cyberLinks, false));
+      mobileContainer.appendChild(createSection('Civil Engineering', civilLinks, false));
     });
   }
 
