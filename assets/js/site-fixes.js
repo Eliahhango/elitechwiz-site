@@ -150,6 +150,22 @@
     { href: '/services/environmental-engineering', title: 'Environmental Engineering', desc: 'Sustainable engineering' }
   ];
 
+  const designLinks = [
+    { href: '/services/ui-ux-design', title: 'UI/UX Design', desc: 'Web & mobile app design' },
+    { href: '/services/web-design', title: 'Web Design', desc: 'Custom websites & landings' },
+    { href: '/services/mobile-design', title: 'Mobile App Design', desc: 'Apps your users love' },
+    { href: '/services/website-redesign', title: 'Website Redesign', desc: 'Modern look, higher impact' },
+    { href: '/services/ux-audit', title: 'UX/UI Audit', desc: 'Insights that drive results' }
+  ];
+
+  const developmentLinks = [
+    { href: '/services/web-development', title: 'Web Development', desc: 'Front-End & Back-End Development' },
+    { href: '/services/mvp-development', title: 'MVP Development', desc: 'MVPs that attract funding' },
+    { href: '/services/webflow', title: 'WebFlow Development', desc: 'No-code development with scale' },
+    { href: '/services/landing-page-design', title: 'Landing Page', desc: 'High-converting website' },
+    { href: '/services/mobile-development', title: 'Mobile Development', desc: 'Native and hybrid apps' }
+  ];
+
   function createSection(label, links, blackTitle) {
     const section = document.createElement('div');
     section.className = 'navbar_dropmenu-section';
@@ -221,26 +237,22 @@
 
       const desktopContainer = dropdown.querySelector('.navbar_dropmenu-desktop-section.is-3-col');
       if (desktopContainer) {
-        removeSection(desktopContainer, 'Branding');
-
-        if (!hasSection(desktopContainer, 'Cybersecurity')) {
-          desktopContainer.appendChild(createSection('Cybersecurity', cyberLinks, true));
-        }
-        if (!hasSection(desktopContainer, 'Civil Engineering')) {
-          desktopContainer.appendChild(createSection('Civil Engineering', civilLinks, true));
-        }
+        // Force services desktop columns to: Design, Development, Cybersecurity, Civil Engineering.
+        desktopContainer.innerHTML = '';
+        desktopContainer.appendChild(createSection('Design', designLinks, true));
+        desktopContainer.appendChild(createSection('Development', developmentLinks, true));
+        desktopContainer.appendChild(createSection('Cybersecurity', cyberLinks, true));
+        desktopContainer.appendChild(createSection('Civil Engineering', civilLinks, true));
       }
 
       const mobileContainer = dropdown.querySelector('.navbar_dropmenu.w-dropdown-list');
       if (mobileContainer) {
-        removeSection(mobileContainer, 'Branding');
-
-        if (!hasSection(mobileContainer, 'Cybersecurity')) {
-          mobileContainer.appendChild(createSection('Cybersecurity', cyberLinks, false));
-        }
-        if (!hasSection(mobileContainer, 'Civil Engineering')) {
-          mobileContainer.appendChild(createSection('Civil Engineering', civilLinks, false));
-        }
+        // Keep mobile consistent too.
+        mobileContainer.innerHTML = '';
+        mobileContainer.appendChild(createSection('Design', designLinks, false));
+        mobileContainer.appendChild(createSection('Development', developmentLinks, false));
+        mobileContainer.appendChild(createSection('Cybersecurity', cyberLinks, false));
+        mobileContainer.appendChild(createSection('Civil Engineering', civilLinks, false));
       }
     });
   }
