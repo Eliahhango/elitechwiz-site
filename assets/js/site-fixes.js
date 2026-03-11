@@ -107,6 +107,17 @@
       '.elite-pricing-breakdown .yes{color:#b7ff2e;font-weight:800;}',
       '.elite-pricing-breakdown .no{color:#7f8cab;font-weight:800;}',
       '@media (max-width:991px){.elite-pricing-breakdown{border-radius:14px;}.elite-pricing-breakdown th,.elite-pricing-breakdown td{font-size:14px;padding:12px 10px;}.elite-pricing-breakdown td:first-child{font-size:14px;}}',
+      '.elite-results-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;width:100%;}',
+      '.elite-results-card{position:relative;background:linear-gradient(165deg,rgba(18,22,36,.86),rgba(7,10,18,.9));border:1px solid rgba(130,157,255,.25);border-radius:22px;padding:28px;overflow:hidden;backdrop-filter:blur(6px);min-height:250px;}',
+      '.elite-results-card::before{content:\"\";position:absolute;inset:auto -40px -70px auto;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(70,111,255,.35),rgba(70,111,255,0));pointer-events:none;}',
+      '.elite-results-kicker{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:rgba(25,33,56,.9);border:1px solid rgba(139,164,255,.35);color:#b7c8ff;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;}',
+      '.elite-results-value{margin:18px 0 10px;font-size:clamp(56px,7vw,110px);line-height:.95;font-weight:800;color:#f5f7ff;letter-spacing:-.04em;}',
+      '.elite-results-label{margin:0 0 8px;color:#fff;font-size:34px;font-weight:650;line-height:1.1;}',
+      '.elite-results-desc{margin:0;color:#a8b3d3;font-size:22px;line-height:1.4;max-width:28ch;}',
+      '.elite-results-trend{position:absolute;top:20px;right:20px;font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(12,205,132,.14);color:#7effc8;border:1px solid rgba(35,219,151,.35);font-weight:700;}',
+      '.elite-results-card.is-risk .elite-results-trend{background:rgba(82,155,255,.14);color:#90c5ff;border-color:rgba(82,155,255,.4);}',
+      '.elite-results-card.is-growth .elite-results-trend{background:rgba(189,112,255,.16);color:#d6a8ff;border-color:rgba(189,112,255,.4);}',
+      '@media (max-width:1279px){.elite-results-grid{grid-template-columns:1fr;}.elite-results-card{min-height:0;padding:22px;}.elite-results-value{font-size:clamp(44px,12vw,72px);}.elite-results-label{font-size:28px;}.elite-results-desc{font-size:18px;}}',
       '@media (max-width:991px){.elite-custom-reviews{margin:40px auto;}.elite-custom-reviews__grid{grid-template-columns:1fr;}}',
       '@media (min-width:992px){',
       '.navbar_dropmenu-desktop,.navbar_dropmenu-desktop-section-wrapper.is-services,.navbar_dropmenu.is-deskotp.w-dropdown-list{overflow:visible !important;}',
@@ -642,6 +653,43 @@
     );
   }
 
+  function redesignHomeResultsSection() {
+    if (!window.location) return;
+    const path = window.location.pathname || '/';
+    if (path !== '/' && path !== '/index.html') return;
+
+    const container = document.querySelector('.home-results-section .home-results-bottom');
+    if (!container || container.getAttribute('data-elite-redesigned') === '1') return;
+
+    container.innerHTML = [
+      '<div class="elite-results-grid">',
+      '<article class="elite-results-card is-growth">',
+      '<span class="elite-results-kicker">UX Performance</span>',
+      '<span class="elite-results-trend">+42% faster activation</span>',
+      '<p class="elite-results-value">+170%</p>',
+      '<h3 class="elite-results-label">Engagement Rate</h3>',
+      '<p class="elite-results-desc">Intuitive user flows that convert visits into qualified leads.</p>',
+      '</article>',
+      '<article class="elite-results-card">',
+      '<span class="elite-results-kicker">Business Impact</span>',
+      '<span class="elite-results-trend">Revenue momentum</span>',
+      '<p class="elite-results-value">4.6x</p>',
+      '<h3 class="elite-results-label">Growth After Redesign</h3>',
+      '<p class="elite-results-desc">Product improvements that strengthen retention and expand revenue.</p>',
+      '</article>',
+      '<article class="elite-results-card is-risk">',
+      '<span class="elite-results-kicker">Retention</span>',
+      '<span class="elite-results-trend">Lower churn risk</span>',
+      '<p class="elite-results-value">-37%</p>',
+      '<h3 class="elite-results-label">Churn Across SaaS Clients</h3>',
+      '<p class="elite-results-desc">Clear onboarding and focused UX reduce drop-offs and cancellations.</p>',
+      '</article>',
+      '</div>'
+    ].join('');
+
+    container.setAttribute('data-elite-redesigned', '1');
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       ensureWebflowIxClassFallback();
@@ -659,6 +707,7 @@
       replacePartnerLogosAndTestimonials();
       replacePricingComparison();
       enforceAboutTanzaniaOnlyLocations();
+      redesignHomeResultsSection();
       scheduleInject(250);
       scheduleInject(1200);
       setTimeout(replaceFooterLocations, 250);
@@ -672,6 +721,7 @@
       setTimeout(replacePartnerLogosAndTestimonials, 250);
       setTimeout(replacePricingComparison, 250);
       setTimeout(enforceAboutTanzaniaOnlyLocations, 250);
+      setTimeout(redesignHomeResultsSection, 250);
     });
   } else {
     ensureWebflowIxClassFallback();
@@ -689,6 +739,7 @@
     replacePartnerLogosAndTestimonials();
     replacePricingComparison();
     enforceAboutTanzaniaOnlyLocations();
+    redesignHomeResultsSection();
     scheduleInject(250);
     scheduleInject(1200);
     setTimeout(replaceFooterLocations, 250);
@@ -702,6 +753,7 @@
     setTimeout(replacePartnerLogosAndTestimonials, 250);
     setTimeout(replacePricingComparison, 250);
     setTimeout(enforceAboutTanzaniaOnlyLocations, 250);
+    setTimeout(redesignHomeResultsSection, 250);
   }
 
   window.addEventListener('load', function () {
@@ -737,6 +789,7 @@
       setTimeout(replacePartnerLogosAndTestimonials, 120);
       setTimeout(replacePricingComparison, 120);
       setTimeout(enforceAboutTanzaniaOnlyLocations, 120);
+      setTimeout(redesignHomeResultsSection, 120);
     }
   }, { passive: true });
 })();
