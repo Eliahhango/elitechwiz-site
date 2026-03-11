@@ -317,6 +317,13 @@
     });
   }
 
+  function removeFooterAwardsStrip() {
+    const strips = document.querySelectorAll('.footer_awards');
+    strips.forEach(function (strip) {
+      strip.remove();
+    });
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       ensureWebflowIxClassFallback();
@@ -325,10 +332,12 @@
       injectSections();
       replaceFooterLocations();
       removeSelectedAwardBadges();
+      removeFooterAwardsStrip();
       scheduleInject(250);
       scheduleInject(1200);
       setTimeout(replaceFooterLocations, 250);
       setTimeout(removeSelectedAwardBadges, 250);
+      setTimeout(removeFooterAwardsStrip, 250);
     });
   } else {
     ensureWebflowIxClassFallback();
@@ -337,10 +346,12 @@
     injectSections();
     replaceFooterLocations();
     removeSelectedAwardBadges();
+    removeFooterAwardsStrip();
     scheduleInject(250);
     scheduleInject(1200);
     setTimeout(replaceFooterLocations, 250);
     setTimeout(removeSelectedAwardBadges, 250);
+    setTimeout(removeFooterAwardsStrip, 250);
   }
 
   window.addEventListener('load', function () {
@@ -367,6 +378,7 @@
       scheduleInject(120);
       setTimeout(replaceFooterLocations, 120);
       setTimeout(removeSelectedAwardBadges, 120);
+      setTimeout(removeFooterAwardsStrip, 120);
     }
   }, { passive: true });
 })();
