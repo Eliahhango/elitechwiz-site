@@ -23,3 +23,6 @@
     pointer-events: all !important;
     display: block !important;
 }
+
+/* Hide legacy awards logo rows */
+.home-ready-to-scale__logos{display:none !important;}
