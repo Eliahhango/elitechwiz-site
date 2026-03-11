@@ -704,6 +704,100 @@
     container.setAttribute('data-elite-redesigned', '1');
   }
 
+  function setText(selector, text) {
+    const node = document.querySelector(selector);
+    if (node) node.textContent = text;
+  }
+
+  function setAllText(selector, values) {
+    const nodes = document.querySelectorAll(selector);
+    nodes.forEach(function (n, i) {
+      if (values[i] !== undefined) n.textContent = values[i];
+    });
+  }
+
+  function rewriteHomePageCopy() {
+    if (!window.location) return;
+    const path = window.location.pathname || '/';
+    if (path !== '/' && path !== '/index.html') return;
+
+    if (document.body && document.body.getAttribute('data-elite-home-copy') === '1') return;
+
+    // Hero
+    setText('.home-hero-subtitle', 'Digital Product Design & Development Agency');
+    setText(
+      '.home-hero-title',
+      'We design and build digital products that help ambitious teams launch faster, convert better, and scale with confidence.'
+    );
+    setAllText('.home-hero-quote_text', [
+      'Trusted by startups, SMEs, and growth-stage teams across multiple markets.',
+      'Since 2016, we have delivered practical product outcomes with measurable business value.'
+    ]);
+
+    // Results top
+    setText('.home-results-title', 'Why teams choose EliTechWiz for high-impact delivery');
+    setAllText('.home-results-right-list-item-text', [
+      'Fast project onboarding with clear ownership',
+      'Reliable delivery timelines you can plan around',
+      'Flexible collaboration models with transparent pricing'
+    ]);
+
+    // Services intro
+    setText('.home-services-title', 'Product design and development services built for real business goals');
+
+    // Cases / reviews heading
+    setText('.home-title-our-cases', 'Case studies');
+    setAllText('.home-reviews-left-title', [
+      'A fintech platform increased product adoption after a full UX redesign and streamlined onboarding.',
+      'A growing SaaS business improved conversion with focused IA, UX writing, and design consistency.',
+      'A B2B product team accelerated launch with a scalable design and development workflow.'
+    ]);
+    setAllText('.home-reviews-left-description', [
+      'The team delivered structured updates, clear communication, and practical execution from start to launch.',
+      'We received thoughtful product guidance, fast iterations, and a final result that improved decision-making.',
+      'From planning to release, EliTechWiz stayed proactive and helped us move with confidence.'
+    ]);
+    setAllText('.home-review-user-name', [
+      'Aisha Msuya',
+      'Daniel Mwita',
+      'Irene Mhando'
+    ]);
+    setAllText('.home-review-user-position', [
+      'Product Manager, Dar es Salaam',
+      'CTO, Kibaha',
+      'Operations Lead, Dar es Salaam'
+    ]);
+
+    // About
+    setText('.home-about-subtitle', 'A focused digital team that turns product ideas into scalable experiences');
+    setAllText('.home-about-quote_text1, .home-about-quote_text2', [
+      'Strategy, UX, UI, and development aligned around business outcomes.',
+      'Cross-functional collaboration that keeps quality high and delivery predictable.'
+    ]);
+
+    // Testimonials section
+    setText('.home-testimonials-top .home-title-upcase', 'Client feedback');
+    setText(
+      '.home-testimonials-subtitle .home-title',
+      'Teams partner with EliTechWiz for clarity, speed, and product execution that delivers measurable results.'
+    );
+
+    // Experience section
+    setText('.home-experience-description', 'We apply proven product methods tailored to your users, market, and growth objectives.');
+
+    // Blog section
+    setText('.home-blog-section .home-title', 'Insights, playbooks, and practical lessons for building better digital products.');
+
+    // CTA section
+    setText('.home-ready-to-scale__card-title', 'Ready to move your product forward?');
+    setText(
+      '.home-ready-to-scale__card-text',
+      'Book a free strategy session to get actionable direction for design, development, and growth.'
+    );
+
+    if (document.body) document.body.setAttribute('data-elite-home-copy', '1');
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       ensureWebflowIxClassFallback();
@@ -722,6 +816,7 @@
       replacePricingComparison();
       enforceAboutTanzaniaOnlyLocations();
       redesignHomeResultsSection();
+      rewriteHomePageCopy();
       scheduleInject(250);
       scheduleInject(1200);
       setTimeout(replaceFooterLocations, 250);
@@ -736,6 +831,7 @@
       setTimeout(replacePricingComparison, 250);
       setTimeout(enforceAboutTanzaniaOnlyLocations, 250);
       setTimeout(redesignHomeResultsSection, 250);
+      setTimeout(rewriteHomePageCopy, 250);
     });
   } else {
     ensureWebflowIxClassFallback();
@@ -754,6 +850,7 @@
     replacePricingComparison();
     enforceAboutTanzaniaOnlyLocations();
     redesignHomeResultsSection();
+    rewriteHomePageCopy();
     scheduleInject(250);
     scheduleInject(1200);
     setTimeout(replaceFooterLocations, 250);
@@ -768,6 +865,7 @@
     setTimeout(replacePricingComparison, 250);
     setTimeout(enforceAboutTanzaniaOnlyLocations, 250);
     setTimeout(redesignHomeResultsSection, 250);
+    setTimeout(rewriteHomePageCopy, 250);
   }
 
   window.addEventListener('load', function () {
@@ -804,6 +902,7 @@
       setTimeout(replacePricingComparison, 120);
       setTimeout(enforceAboutTanzaniaOnlyLocations, 120);
       setTimeout(redesignHomeResultsSection, 120);
+      setTimeout(rewriteHomePageCopy, 120);
     }
   }, { passive: true });
 })();
