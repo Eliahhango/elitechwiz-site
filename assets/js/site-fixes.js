@@ -283,6 +283,40 @@
     });
   }
 
+  function normalizeText(value) {
+    return (value || '').replace(/\s+/g, ' ').trim().toLowerCase();
+  }
+
+  function removeSelectedAwardBadges() {
+    const targets = [
+      'reviews on clutch',
+      'top 50 trending team on dribbble',
+      'global 100 b2b ui/ux company',
+      'professional partner by webflow',
+      'top user experience team by goodfirms',
+      'projects are featured on behance platform'
+    ];
+
+    const awardTexts = document.querySelectorAll('.services-page-awards_item-text');
+    awardTexts.forEach(function (node) {
+      const text = normalizeText(node.textContent);
+      const shouldRemove = targets.some(function (t) {
+        return text.indexOf(t) !== -1;
+      });
+      if (!shouldRemove) return;
+
+      const cardWrap = node.closest('.services-page-awards_card-wrap');
+      const card = node.closest('.services-page-awards_card');
+      if (cardWrap) {
+        cardWrap.remove();
+        return;
+      }
+      if (card) {
+        card.remove();
+      }
+    });
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       ensureWebflowIxClassFallback();
@@ -290,9 +324,11 @@
       installTabsScrollFixes();
       injectSections();
       replaceFooterLocations();
+      removeSelectedAwardBadges();
       scheduleInject(250);
       scheduleInject(1200);
       setTimeout(replaceFooterLocations, 250);
+      setTimeout(removeSelectedAwardBadges, 250);
     });
   } else {
     ensureWebflowIxClassFallback();
@@ -300,9 +336,11 @@
     installTabsScrollFixes();
     injectSections();
     replaceFooterLocations();
+    removeSelectedAwardBadges();
     scheduleInject(250);
     scheduleInject(1200);
     setTimeout(replaceFooterLocations, 250);
+    setTimeout(removeSelectedAwardBadges, 250);
   }
 
   window.addEventListener('load', function () {
@@ -328,6 +366,7 @@
       scheduleInject(0);
       scheduleInject(120);
       setTimeout(replaceFooterLocations, 120);
+      setTimeout(removeSelectedAwardBadges, 120);
     }
   }, { passive: true });
 })();
