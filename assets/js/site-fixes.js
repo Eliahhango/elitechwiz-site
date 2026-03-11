@@ -241,8 +241,11 @@
     });
 
     // Rebuild every mobile services list by detecting known old services content.
-    const mobileLists = document.querySelectorAll('.navbar_dropmenu.w-dropdown-list');
+    const mobileLists = document.querySelectorAll('.navbar_dropmenu.w-dropdown-list:not(.is-deskotp)');
     mobileLists.forEach(function (mobileContainer) {
+      // Never treat desktop mega-menu wrappers as mobile lists.
+      if (mobileContainer.querySelector('.navbar_dropmenu-desktop')) return;
+
       const lower = (mobileContainer.textContent || '').toLowerCase();
       const looksLikeServicesMenu =
         lower.indexOf('pitch deck') !== -1 ||
