@@ -1,6 +1,7 @@
 (function () {
   let styleInjected = false;
   let injectTimer = null;
+  let hadClutchReviewContent = false;
 
     function ensureWebflowIxClassFallback() {
     const root = document.documentElement;
@@ -90,6 +91,13 @@
     style.textContent = [
       'html,body{max-width:100%;overflow-x:hidden;}',
       'img{max-width:100%;height:auto;}',
+      '.elite-custom-reviews{max-width:1200px;margin:56px auto;padding:0 20px;}',
+      '.elite-custom-reviews__title{margin:0 0 20px;font-size:clamp(26px,3vw,42px);line-height:1.15;color:#fff;font-weight:700;}',
+      '.elite-custom-reviews__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;}',
+      '.elite-custom-reviews__card{background:#121217;border:1px solid #24243a;border-radius:16px;padding:20px;color:#e8e8f0;}',
+      '.elite-custom-reviews__quote{margin:0 0 14px;font-size:16px;line-height:1.6;color:#f4f4fa;}',
+      '.elite-custom-reviews__author{margin:0;font-size:14px;line-height:1.4;color:#9ea4bc;font-weight:600;}',
+      '@media (max-width:991px){.elite-custom-reviews{margin:40px auto;}.elite-custom-reviews__grid{grid-template-columns:1fr;}}',
       '@media (min-width:992px){',
       '.navbar_dropmenu-desktop,.navbar_dropmenu-desktop-section-wrapper.is-services,.navbar_dropmenu.is-deskotp.w-dropdown-list{overflow:visible !important;}',
       '.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-desktop-section.is-3-col{display:grid !important;grid-template-columns:repeat(4,minmax(220px,1fr)) !important;column-gap:28px !important;row-gap:16px !important;min-width:0 !important;width:100% !important;}',
@@ -368,6 +376,72 @@
     });
   }
 
+  function removeClutchReviewSources() {
+    // Remove external Clutch/Pinterest review links.
+    const externalLinks = document.querySelectorAll('a[href*="clutch"], a[href*="pinterest.com/eliahhango"]');
+    externalLinks.forEach(function (a) {
+      const section = a.closest('section');
+      if (section) {
+        const text = normalizeText(section.textContent);
+        if (text.indexOf('review') !== -1 || text.indexOf('clutch') !== -1) {
+          hadClutchReviewContent = true;
+          section.remove();
+          return;
+        }
+      }
+      hadClutchReviewContent = true;
+      a.removeAttribute('href');
+    });
+
+    // Remove any section that is explicitly a Clutch-based reviews block.
+    const sections = document.querySelectorAll('section');
+    sections.forEach(function (section) {
+      const text = normalizeText(section.textContent);
+      if (text.indexOf('clutch') === -1) return;
+      if (text.indexOf('review') === -1 && text.indexOf('rated') === -1) return;
+      hadClutchReviewContent = true;
+      section.remove();
+    });
+
+    // Remove leftover clutch logos/icons.
+    const clutchAssets = document.querySelectorAll('img[src*="clutch"], img[alt*="Clutch"], img[alt*="clutch"]');
+    clutchAssets.forEach(function (img) {
+      const wrap = img.closest('.works-page-review_platform-label, .services-page-awards_card, .services-page-awards_card-wrap');
+      if (wrap) {
+        hadClutchReviewContent = true;
+        wrap.remove();
+        return;
+      }
+      hadClutchReviewContent = true;
+      img.remove();
+    });
+  }
+
+  function injectCustomReviews() {
+    if (!hadClutchReviewContent) return;
+    if (document.querySelector('.elite-custom-reviews')) return;
+    const main = document.querySelector('main') || document.querySelector('.page-wrapper') || document.body;
+    if (!main) return;
+
+    const section = document.createElement('section');
+    section.className = 'elite-custom-reviews';
+    section.innerHTML = [
+      '<h2 class="elite-custom-reviews__title">Client Reviews</h2>',
+      '<div class="elite-custom-reviews__grid">',
+      '<article class="elite-custom-reviews__card"><p class="elite-custom-reviews__quote">"EliTechWiz redesigned our platform and improved user flow in less than six weeks. Our onboarding completion rate increased immediately."</p><p class="elite-custom-reviews__author">Amani K. - Product Lead, Dar es Salaam</p></article>',
+      '<article class="elite-custom-reviews__card"><p class="elite-custom-reviews__quote">"Communication was clear, weekly delivery was consistent, and the final UI feels modern and fast across desktop and mobile."</p><p class="elite-custom-reviews__author">Neema P. - Operations Manager, Kibaha</p></article>',
+      '<article class="elite-custom-reviews__card"><p class="elite-custom-reviews__quote">"From strategy to launch, the team handled design and development professionally. We now have a site that converts better."</p><p class="elite-custom-reviews__author">Joseph M. - Founder, Dar es Salaam</p></article>',
+      '</div>'
+    ].join('');
+
+    const footer = document.querySelector('footer');
+    if (footer && footer.parentNode) {
+      footer.parentNode.insertBefore(section, footer);
+      return;
+    }
+    main.appendChild(section);
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       ensureWebflowIxClassFallback();
@@ -380,6 +454,8 @@
       removeAwardsSections();
       removeReadyToScaleLogos();
       removeResidualAwardsRows();
+      removeClutchReviewSources();
+      injectCustomReviews();
       scheduleInject(250);
       scheduleInject(1200);
       setTimeout(replaceFooterLocations, 250);
@@ -388,6 +464,8 @@
       setTimeout(removeAwardsSections, 250);
       setTimeout(removeReadyToScaleLogos, 250);
       setTimeout(removeResidualAwardsRows, 250);
+      setTimeout(removeClutchReviewSources, 250);
+      setTimeout(injectCustomReviews, 250);
     });
   } else {
     ensureWebflowIxClassFallback();
@@ -400,6 +478,8 @@
     removeAwardsSections();
     removeReadyToScaleLogos();
     removeResidualAwardsRows();
+    removeClutchReviewSources();
+    injectCustomReviews();
     scheduleInject(250);
     scheduleInject(1200);
     setTimeout(replaceFooterLocations, 250);
@@ -408,6 +488,8 @@
     setTimeout(removeAwardsSections, 250);
     setTimeout(removeReadyToScaleLogos, 250);
     setTimeout(removeResidualAwardsRows, 250);
+    setTimeout(removeClutchReviewSources, 250);
+    setTimeout(injectCustomReviews, 250);
   }
 
   window.addEventListener('load', function () {
@@ -438,6 +520,8 @@
       setTimeout(removeAwardsSections, 120);
       setTimeout(removeReadyToScaleLogos, 120);
       setTimeout(removeResidualAwardsRows, 120);
+      setTimeout(removeClutchReviewSources, 120);
+      setTimeout(injectCustomReviews, 120);
     }
   }, { passive: true });
 })();

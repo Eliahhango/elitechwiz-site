@@ -36,3 +36,10 @@
 .footer_awards {
     display: none !important;
 }
+
+/* Remove legacy review widgets that were sourced from external platforms */
+.section_works-reviews,
+.works-reviews_main,
+.works-page-review_platform-label {
+    display: none !important;
+}
