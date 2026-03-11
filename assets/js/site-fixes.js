@@ -97,6 +97,16 @@
       '.elite-custom-reviews__card{background:#121217;border:1px solid #24243a;border-radius:16px;padding:20px;color:#e8e8f0;}',
       '.elite-custom-reviews__quote{margin:0 0 14px;font-size:16px;line-height:1.6;color:#f4f4fa;}',
       '.elite-custom-reviews__author{margin:0;font-size:14px;line-height:1.4;color:#9ea4bc;font-weight:600;}',
+      '.elite-pricing-breakdown{width:100%;border:1px solid #2a2f44;border-radius:18px;background:rgba(14,18,30,.72);overflow:hidden;}',
+      '.elite-pricing-breakdown table{width:100%;border-collapse:collapse;}',
+      '.elite-pricing-breakdown th,.elite-pricing-breakdown td{padding:16px 18px;border-bottom:1px solid #2a2f44;color:#f2f5ff;font-size:20px;line-height:1.3;}',
+      '.elite-pricing-breakdown th{font-weight:700;text-align:left;}',
+      '.elite-pricing-breakdown td{text-align:center;font-size:18px;}',
+      '.elite-pricing-breakdown td:first-child{text-align:left;font-size:18px;color:#dce3ff;}',
+      '.elite-pricing-breakdown tr:last-child td{border-bottom:0;}',
+      '.elite-pricing-breakdown .yes{color:#b7ff2e;font-weight:800;}',
+      '.elite-pricing-breakdown .no{color:#7f8cab;font-weight:800;}',
+      '@media (max-width:991px){.elite-pricing-breakdown{border-radius:14px;}.elite-pricing-breakdown th,.elite-pricing-breakdown td{font-size:14px;padding:12px 10px;}.elite-pricing-breakdown td:first-child{font-size:14px;}}',
       '@media (max-width:991px){.elite-custom-reviews{margin:40px auto;}.elite-custom-reviews__grid{grid-template-columns:1fr;}}',
       '@media (min-width:992px){',
       '.navbar_dropmenu-desktop,.navbar_dropmenu-desktop-section-wrapper.is-services,.navbar_dropmenu.is-deskotp.w-dropdown-list{overflow:visible !important;}',
@@ -530,6 +540,38 @@
     });
   }
 
+  function replacePricingComparison() {
+    if (!window.location || window.location.pathname.indexOf('/pricing') !== 0) return;
+    if (document.querySelector('.elite-pricing-breakdown')) return;
+
+    const wrapper = document.querySelector('.pricing-breakdown_image-wrapper');
+    if (!wrapper) return;
+
+    const table = document.createElement('div');
+    table.className = 'elite-pricing-breakdown';
+    table.innerHTML = [
+      '<table>',
+      '<thead><tr><th>Feature</th><th>EliTechWiz</th><th>Freelancers</th><th>Outsourcing Vendor</th></tr></thead>',
+      '<tbody>',
+      '<tr><td>Senior-level expertise</td><td class="yes">Yes</td><td class="no">No</td><td class="yes">Yes</td></tr>',
+      '<tr><td>Specialized market knowledge</td><td class="yes">Yes</td><td class="no">No</td><td class="yes">Yes</td></tr>',
+      '<tr><td>Clear scope, timeline and cost before start</td><td class="yes">Yes</td><td class="no">No</td><td class="yes">Yes</td></tr>',
+      '<tr><td>Fast project start (3-5 days)</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="no">No</td></tr>',
+      '<tr><td>3-day free trial</td><td class="yes">Yes</td><td class="no">No</td><td class="no">No</td></tr>',
+      '<tr><td>Direct and fast communication</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="no">No</td></tr>',
+      '<tr><td>Dedicated project manager</td><td class="yes">Yes</td><td class="no">No</td><td class="yes">Yes</td></tr>',
+      '<tr><td>Easy to scale team capacity</td><td class="yes">Yes</td><td class="no">No</td><td class="yes">Yes</td></tr>',
+      '</tbody>',
+      '</table>'
+    ].join('');
+
+    wrapper.innerHTML = '';
+    wrapper.appendChild(table);
+
+    const swiper = document.querySelector('.pricing-breakdown-swiper');
+    if (swiper) swiper.style.display = 'none';
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       ensureWebflowIxClassFallback();
@@ -545,6 +587,7 @@
       removeClutchReviewSources();
       injectCustomReviews();
       replacePartnerLogosAndTestimonials();
+      replacePricingComparison();
       scheduleInject(250);
       scheduleInject(1200);
       setTimeout(replaceFooterLocations, 250);
@@ -556,6 +599,7 @@
       setTimeout(removeClutchReviewSources, 250);
       setTimeout(injectCustomReviews, 250);
       setTimeout(replacePartnerLogosAndTestimonials, 250);
+      setTimeout(replacePricingComparison, 250);
     });
   } else {
     ensureWebflowIxClassFallback();
@@ -571,6 +615,7 @@
     removeClutchReviewSources();
     injectCustomReviews();
     replacePartnerLogosAndTestimonials();
+    replacePricingComparison();
     scheduleInject(250);
     scheduleInject(1200);
     setTimeout(replaceFooterLocations, 250);
@@ -582,6 +627,7 @@
     setTimeout(removeClutchReviewSources, 250);
     setTimeout(injectCustomReviews, 250);
     setTimeout(replacePartnerLogosAndTestimonials, 250);
+    setTimeout(replacePricingComparison, 250);
   }
 
   window.addEventListener('load', function () {
@@ -615,6 +661,7 @@
       setTimeout(removeClutchReviewSources, 120);
       setTimeout(injectCustomReviews, 120);
       setTimeout(replacePartnerLogosAndTestimonials, 120);
+      setTimeout(replacePricingComparison, 120);
     }
   }, { passive: true });
 })();
