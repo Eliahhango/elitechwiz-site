@@ -24,5 +24,15 @@
     display: block !important;
 }
 
-/* Hide legacy awards logo rows */
-.home-ready-to-scale__logos{display:none !important;}
+/* Remove awards/badges strips globally */
+.home-ready-to-scale__logos,
+.section_services-awards,
+.services-page-awards_main,
+.services-page-awards_cards,
+.services-page_awards-wrapper,
+.services-page_show-more,
+.works-match_awards,
+.works-match_awards-card,
+.footer_awards {
+    display: none !important;
+}

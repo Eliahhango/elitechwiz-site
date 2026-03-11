@@ -98,7 +98,8 @@
       '.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropwmenu-link-text{min-width:0 !important;overflow-wrap:break-word;word-break:normal;}',
       '}',
       '@media (min-width:992px) and (max-width:1439px){.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-desktop-section.is-3-col{grid-template-columns:repeat(3,minmax(220px,1fr)) !important;}}',
-      '@media (max-width:1279px){.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-desktop-section.is-3-col{grid-template-columns:repeat(2,minmax(220px,1fr)) !important;}}'
+      '@media (max-width:1279px){.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-desktop-section.is-3-col{grid-template-columns:repeat(2,minmax(220px,1fr)) !important;}}',
+      '.section_services-awards,.services-page-awards_cards,.services-page_awards-wrapper,.services-page_show-more,.home-ready-to-scale__logos,.works-match_awards,.works-match_awards-card{display:none !important;}'
     ].join('');
     document.head.appendChild(style);
     styleInjected = true;
@@ -349,6 +350,24 @@
     });
   }
 
+  function removeResidualAwardsRows() {
+    const selectors = [
+      '.section_services-awards',
+      '.services-page-awards_cards',
+      '.services-page_awards-wrapper',
+      '.services-page_show-more',
+      '.home-ready-to-scale__logos',
+      '.works-match_awards',
+      '.works-match_awards-card'
+    ];
+
+    selectors.forEach(function (selector) {
+      document.querySelectorAll(selector).forEach(function (node) {
+        node.remove();
+      });
+    });
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       ensureWebflowIxClassFallback();
@@ -360,6 +379,7 @@
       removeFooterAwardsStrip();
       removeAwardsSections();
       removeReadyToScaleLogos();
+      removeResidualAwardsRows();
       scheduleInject(250);
       scheduleInject(1200);
       setTimeout(replaceFooterLocations, 250);
@@ -367,6 +387,7 @@
       setTimeout(removeFooterAwardsStrip, 250);
       setTimeout(removeAwardsSections, 250);
       setTimeout(removeReadyToScaleLogos, 250);
+      setTimeout(removeResidualAwardsRows, 250);
     });
   } else {
     ensureWebflowIxClassFallback();
@@ -378,6 +399,7 @@
     removeFooterAwardsStrip();
     removeAwardsSections();
     removeReadyToScaleLogos();
+    removeResidualAwardsRows();
     scheduleInject(250);
     scheduleInject(1200);
     setTimeout(replaceFooterLocations, 250);
@@ -385,6 +407,7 @@
     setTimeout(removeFooterAwardsStrip, 250);
     setTimeout(removeAwardsSections, 250);
     setTimeout(removeReadyToScaleLogos, 250);
+    setTimeout(removeResidualAwardsRows, 250);
   }
 
   window.addEventListener('load', function () {
@@ -414,6 +437,7 @@
       setTimeout(removeFooterAwardsStrip, 120);
       setTimeout(removeAwardsSections, 120);
       setTimeout(removeReadyToScaleLogos, 120);
+      setTimeout(removeResidualAwardsRows, 120);
     }
   }, { passive: true });
 })();
