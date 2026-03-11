@@ -617,11 +617,6 @@
   function enforceAboutTanzaniaOnlyLocations() {
     if (!window.location || window.location.pathname.indexOf('/about') !== 0) return;
 
-    const mapInteractive = document.querySelector('.cp-location_map-wrapper.is-interactive');
-    if (mapInteractive) {
-      mapInteractive.style.display = 'none';
-    }
-
     const tags = document.querySelector('.location_tags');
     if (tags) {
       tags.remove();
