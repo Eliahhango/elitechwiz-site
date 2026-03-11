@@ -215,22 +215,94 @@
     });
   }
 
+  function buildLocationCard(name, code, flagSrc, flagAlt, description) {
+    const card = document.createElement('div');
+    card.className = 'footer-location-card';
+
+    const top = document.createElement('div');
+    top.className = 'footer-location-card__top';
+
+    const nameNode = document.createElement('p');
+    nameNode.className = 'footer-location-card__name';
+    nameNode.textContent = name;
+
+    const info = document.createElement('div');
+    info.className = 'footer-location-card__info';
+
+    const codeNode = document.createElement('p');
+    codeNode.className = 'paragraph-15';
+    codeNode.textContent = code;
+
+    const tag = document.createElement('div');
+    tag.className = 'footer-location-card-tag';
+
+    const img = document.createElement('img');
+    img.loading = 'lazy';
+    img.src = flagSrc;
+    img.alt = flagAlt;
+
+    tag.appendChild(img);
+    info.appendChild(codeNode);
+    info.appendChild(tag);
+    top.appendChild(nameNode);
+    top.appendChild(info);
+
+    const desc = document.createElement('p');
+    desc.className = 'footer-location-card__description';
+    desc.textContent = description;
+
+    card.appendChild(top);
+    card.appendChild(desc);
+    return card;
+  }
+
+  function replaceFooterLocations() {
+    const wrappers = document.querySelectorAll('.footer-locations-content');
+    if (!wrappers.length) return;
+
+    wrappers.forEach(function (wrapper) {
+      wrapper.innerHTML = '';
+      wrapper.appendChild(
+        buildLocationCard(
+          'Dar es Salaam',
+          'TZ',
+          'https://flagcdn.com/w40/tz.png',
+          'Tanzania flag',
+          'Posta, Kivukoni, Dar es Salaam, Tanzania'
+        )
+      );
+      wrapper.appendChild(
+        buildLocationCard(
+          'Kibaha, Pwani',
+          'TZ',
+          'https://flagcdn.com/w40/tz.png',
+          'Tanzania flag',
+          'Mailimoja Area, Kibaha, Pwani, Tanzania'
+        )
+      );
+    });
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       ensureWebflowIxClassFallback();
       installLenisUnblockFix();
       installTabsScrollFixes();
       injectSections();
+      replaceFooterLocations();
       scheduleInject(250);
       scheduleInject(1200);
+      setTimeout(replaceFooterLocations, 250);
     });
   } else {
     ensureWebflowIxClassFallback();
     installLenisUnblockFix();
     installTabsScrollFixes();
     injectSections();
+    replaceFooterLocations();
     scheduleInject(250);
     scheduleInject(1200);
+    setTimeout(replaceFooterLocations, 250);
   }
 
   window.addEventListener('load', function () {
@@ -255,6 +327,7 @@
     ) {
       scheduleInject(0);
       scheduleInject(120);
+      setTimeout(replaceFooterLocations, 120);
     }
   }, { passive: true });
 })();
