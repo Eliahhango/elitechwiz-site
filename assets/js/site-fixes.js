@@ -138,7 +138,13 @@
       '}',
       '@media (min-width:992px) and (max-width:1439px){.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-desktop-section.is-3-col{grid-template-columns:repeat(3,minmax(220px,1fr)) !important;}}',
       '@media (max-width:1279px){.navbar_dropmenu-desktop-section-wrapper.is-services .navbar_dropmenu-desktop-section.is-3-col{grid-template-columns:repeat(2,minmax(220px,1fr)) !important;}}',
-      '.section_services-awards,.services-page-awards_cards,.services-page_awards-wrapper,.services-page_show-more,.home-ready-to-scale__logos,.works-match_awards,.works-match_awards-card{display:none !important;}'
+      '.section_services-awards,.services-page-awards_cards,.services-page_awards-wrapper,.services-page_show-more,.home-ready-to-scale__logos,.works-match_awards,.works-match_awards-card{display:none !important;}',
+      '.elite-service-page .hero_title-tag{border:1px solid rgba(130,164,255,.45);background:rgba(16,28,66,.42);backdrop-filter:blur(4px);}',
+      '.elite-service-page .services-hero_heading-wrapper .is-italic{color:#8ec5ff;}',
+      '.elite-service-page-cyber .services-hero_heading-wrapper .is-italic{color:#73ffe0;}',
+      '.elite-service-page-civil .services-hero_heading-wrapper .is-italic{color:#9fcbff;}',
+      '.elite-service-page .services-benefits_card-list-item{font-weight:600;}',
+      '.elite-service-page .faq_item-question{font-weight:700;}'
     ].join('');
     document.head.appendChild(style);
     styleInjected = true;
@@ -814,6 +820,350 @@
     if (document.body) document.body.setAttribute('data-elite-home-copy', '1');
   }
 
+  const servicePageData = {
+    '/services/penetration-testing': {
+      theme: 'cyber',
+      title: 'Penetration Testing Services | EliTechWiz',
+      description: 'Penetration testing services to identify exploitable vulnerabilities, reduce risk, and harden critical systems.',
+      heroTitle: '<em class="is-italic">Penetration Testing</em> that exposes risk before attackers do',
+      heroText: 'We simulate real-world attacks across web apps, APIs, cloud, and internal networks, then provide prioritized fixes your team can implement fast.',
+      tags: ['Web Apps', 'APIs', 'Cloud', 'Internal Network'],
+      processTitle: 'Our penetration testing workflow built for measurable risk reduction',
+      processSubtitle: 'Scoping, threat modeling, exploitation, and retesting delivered in a clear engineering workflow.',
+      benefitsTitle: 'What you gain from our penetration testing engagement',
+      benefitsSubtitle: 'Actionable findings, technical depth, and a remediation roadmap that helps teams close vulnerabilities faster.',
+      expertiseTitle: 'Technical capabilities for offensive security validation',
+      expertiseSubtitle: 'We test authentication, authorization, business logic, API abuse paths, and infrastructure weaknesses.',
+      toolsTitle: 'Security stack we use for deep coverage',
+      toolsSubtitle: 'Industry-standard and custom testing workflows to validate real exploit paths.',
+      tools: ['Burp Suite', 'Nmap', 'OWASP ZAP', 'Metasploit', 'Kali Linux', 'Wireshark', 'Nessus', 'Custom Scripts'],
+      faqs: [
+        ['How often should penetration testing be done?', 'For most teams, run a full test at least annually and after major releases, architecture changes, or integrations.'],
+        ['Do you provide proof-of-concept exploits?', 'Yes. We include evidence for validated findings, with business impact and technical reproduction steps.'],
+        ['Can you test staging and production?', 'Yes. We recommend staged testing first, then controlled production validation for critical paths.'],
+        ['Will you help with remediation?', 'Yes. We provide fix guidance, developer sessions, and optional retesting to verify closure.'],
+        ['Do you sign NDA and handle sensitive data securely?', 'Yes. Every engagement is protected by NDA and strict data handling procedures.']
+      ],
+      ctaTitle: 'Secure your platform before incidents happen',
+      ctaText: 'Book a security discovery call and receive a penetration testing scope tailored to your systems.'
+    },
+    '/services/network-security': {
+      theme: 'cyber',
+      title: 'Network Security Services | EliTechWiz',
+      description: 'Network security services for visibility, segmentation, hardening, and resilient infrastructure operations.',
+      heroTitle: '<em class="is-italic">Network Security</em> designed for uptime and resilience',
+      heroText: 'We design and harden your network architecture to reduce attack surface, improve monitoring, and protect business continuity.',
+      tags: ['Segmentation', 'Firewall', 'Zero Trust', 'Monitoring'],
+      processTitle: 'Network security delivery with practical implementation steps',
+      processSubtitle: 'Assessment, architecture design, hardening, monitoring integration, and validation.',
+      benefitsTitle: 'How your team benefits from network hardening',
+      benefitsSubtitle: 'Better control over lateral movement, stronger monitoring, and improved incident response readiness.',
+      expertiseTitle: 'Our network defense capabilities',
+      expertiseSubtitle: 'We cover perimeter, internal segmentation, VPN, identity-aware access, and logging strategy.',
+      toolsTitle: 'Core technologies we work with',
+      toolsSubtitle: 'Security tooling and infrastructure controls aligned with your operating environment.',
+      tools: ['SIEM', 'IDS/IPS', 'Firewall Rules', 'VPN Controls', 'ZTNA', 'EDR', 'NetFlow', 'Alerting'],
+      faqs: [
+        ['What is included in network security assessment?', 'Topology review, exposed services mapping, policy checks, and high-risk configuration analysis.'],
+        ['Can you secure hybrid cloud networks?', 'Yes. We secure on-prem, cloud, and hybrid environments with unified policy recommendations.'],
+        ['Do you help with segmentation design?', 'Yes. We define trust zones and access paths to reduce blast radius during incidents.'],
+        ['Will this disrupt daily operations?', 'We plan implementation windows to minimize impact and keep services available.'],
+        ['Do you provide documentation?', 'Yes. You receive architecture notes, policy updates, and an actionable implementation plan.']
+      ],
+      ctaTitle: 'Build a stronger network defense baseline',
+      ctaText: 'Talk to our team to get a practical roadmap for securing your internal and external network layers.'
+    },
+    '/services/cybersecurity-consulting': {
+      theme: 'cyber',
+      title: 'Cybersecurity Consulting Services | EliTechWiz',
+      description: 'Cybersecurity consulting services to align security strategy, risk management, and operational execution.',
+      heroTitle: '<em class="is-italic">Cybersecurity Consulting</em> aligned with business risk',
+      heroText: 'We help leadership and engineering teams turn security goals into practical controls, processes, and measurable outcomes.',
+      tags: ['Risk Strategy', 'Governance', 'Compliance', 'Execution'],
+      processTitle: 'Consulting approach from strategy to implementation',
+      processSubtitle: 'Current-state review, risk prioritization, control planning, and execution support.',
+      benefitsTitle: 'What our cybersecurity consulting delivers',
+      benefitsSubtitle: 'Clear governance, reduced risk exposure, and confident decision-making for technical and business teams.',
+      expertiseTitle: 'Advisory areas we cover',
+      expertiseSubtitle: 'Security architecture, policies, compliance readiness, incident preparedness, and vendor risk controls.',
+      toolsTitle: 'Frameworks and operating models we leverage',
+      toolsSubtitle: 'Best-practice models adapted to your team maturity and business stage.',
+      tools: ['ISO 27001', 'NIST CSF', 'Risk Registers', 'Control Matrices', 'IR Playbooks', 'Policy Packs', 'Vendor Reviews', 'Awareness'],
+      faqs: [
+        ['Who is cybersecurity consulting best for?', 'Founders, CTOs, and operations leaders needing practical security direction and execution support.'],
+        ['Do you support compliance readiness?', 'Yes. We help map controls, collect evidence, and prepare teams for audits.'],
+        ['Can you work with existing IT teams?', 'Yes. We collaborate with internal teams and external vendors to avoid disruption.'],
+        ['Do you offer recurring advisory?', 'Yes. Monthly advisory support is available for continuous security improvement.'],
+        ['How fast can we start?', 'Discovery can start within days after scope alignment.']
+      ],
+      ctaTitle: 'Turn security goals into an executable plan',
+      ctaText: 'Book a consulting session to prioritize the security actions that matter most for your business.'
+    },
+    '/services/cloud-security': {
+      theme: 'cyber',
+      title: 'Cloud Security Services | EliTechWiz',
+      description: 'Cloud security services for identity controls, workload protection, and resilient cloud operations.',
+      heroTitle: '<em class="is-italic">Cloud Security</em> for secure and scalable growth',
+      heroText: 'We secure cloud environments with least-privilege access, hardened configurations, and continuous monitoring controls.',
+      tags: ['AWS/Azure', 'IAM', 'Workloads', 'Compliance'],
+      processTitle: 'Cloud security implementation with clear control ownership',
+      processSubtitle: 'Assessment, IAM design, configuration hardening, monitoring setup, and policy rollout.',
+      benefitsTitle: 'Business outcomes from cloud security hardening',
+      benefitsSubtitle: 'Lower misconfiguration risk, stronger access control, and improved cloud incident readiness.',
+      expertiseTitle: 'Cloud security capabilities',
+      expertiseSubtitle: 'Identity governance, secrets management, logging, workload security, and policy enforcement.',
+      toolsTitle: 'Cloud security controls we implement',
+      toolsSubtitle: 'Native and integrated tooling to improve prevention, detection, and response.',
+      tools: ['IAM Policies', 'CSPM', 'WAF', 'Key Management', 'Cloud Logs', 'Runtime Security', 'Backup Controls', 'Alerting'],
+      faqs: [
+        ['Can you audit existing cloud accounts?', 'Yes. We assess accounts, workloads, permissions, and exposure points.'],
+        ['Do you support multi-cloud setups?', 'Yes. We support single-cloud and multi-cloud security governance models.'],
+        ['Will you help with IAM redesign?', 'Yes. We implement least-privilege and role-based access controls.'],
+        ['Do you configure monitoring and alerts?', 'Yes. We set practical detection and alerting thresholds tied to risk.'],
+        ['Can cloud security be done without downtime?', 'Yes. We stage and sequence changes to avoid service interruption.']
+      ],
+      ctaTitle: 'Harden your cloud before scale increases risk',
+      ctaText: 'Schedule a cloud security review and get a prioritized hardening roadmap.'
+    },
+    '/services/security-audits': {
+      theme: 'cyber',
+      title: 'Security Audit Services | EliTechWiz',
+      description: 'Security audit services to assess controls, detect gaps, and strengthen your overall security posture.',
+      heroTitle: '<em class="is-italic">Security Audits</em> that convert findings into action',
+      heroText: 'Our audits evaluate technical and process controls, then translate findings into a prioritized remediation program.',
+      tags: ['Control Review', 'Gap Analysis', 'Policy Audit', 'Remediation'],
+      processTitle: 'Audit workflow focused on practical remediation',
+      processSubtitle: 'Scope definition, evidence collection, risk scoring, and implementation roadmap.',
+      benefitsTitle: 'What a strong security audit gives your team',
+      benefitsSubtitle: 'Clear visibility of risk, decision-ready reporting, and a structured path to improvement.',
+      expertiseTitle: 'Audit domains we cover',
+      expertiseSubtitle: 'Infrastructure, identity, application controls, policies, and incident readiness.',
+      toolsTitle: 'Audit methods and analysis stack',
+      toolsSubtitle: 'Structured review processes supported by technical validation.',
+      tools: ['Control Mapping', 'Config Review', 'Risk Scoring', 'Evidence Matrix', 'Policy Checks', 'Interview Notes', 'Report Packs', 'Retest'],
+      faqs: [
+        ['How is a security audit different from pentesting?', 'Audit reviews overall controls and governance; pentesting validates exploitability of technical weaknesses.'],
+        ['Do you provide executive and technical reports?', 'Yes. We provide leadership summaries and detailed technical findings.'],
+        ['Can you align audit results to compliance needs?', 'Yes. Findings can be mapped to your compliance objectives and standards.'],
+        ['How long does a typical audit take?', 'Depending on scope, most audits complete in 2-6 weeks.'],
+        ['Do you offer follow-up validation?', 'Yes. We can retest and validate fixes after remediation.']
+      ],
+      ctaTitle: 'Get a clear view of your security maturity',
+      ctaText: 'Book a security audit scoping call and receive a tailored assessment plan.'
+    },
+    '/services/structural-design': {
+      theme: 'civil',
+      title: 'Structural Design Services | EliTechWiz',
+      description: 'Structural design services for safe, code-compliant, and cost-efficient residential and commercial projects.',
+      heroTitle: '<em class="is-italic">Structural Design</em> built for safety, efficiency, and longevity',
+      heroText: 'We design reliable structural systems for buildings and infrastructure with strong engineering rigor and code compliance.',
+      tags: ['Residential', 'Commercial', 'Industrial', 'Infrastructure'],
+      processTitle: 'Engineering process from concept design to final structural package',
+      processSubtitle: 'Load analysis, modeling, detailing, and coordination with architects and MEP teams.',
+      benefitsTitle: 'What clients gain from our structural engineering service',
+      benefitsSubtitle: 'Safer structures, optimized material usage, and build-ready documents for smooth execution.',
+      expertiseTitle: 'Structural design capabilities',
+      expertiseSubtitle: 'Concrete, steel, and mixed systems with seismic and environmental considerations.',
+      toolsTitle: 'Engineering tools we apply',
+      toolsSubtitle: 'Modern modeling and detailing software for accuracy and speed.',
+      tools: ['ETABS', 'SAP2000', 'STAAD', 'Revit', 'AutoCAD', 'BIM Review', 'Code Checks', 'Detailing'],
+      faqs: [
+        ['Do you design both residential and commercial structures?', 'Yes. We provide structural design across residential, commercial, and mixed-use projects.'],
+        ['Can you optimize designs for cost efficiency?', 'Yes. We optimize member sizing and material usage while preserving safety and compliance.'],
+        ['Do you coordinate with architects and contractors?', 'Yes. We collaborate throughout design and construction phases for alignment.'],
+        ['Are your designs code-compliant?', 'Yes. Designs are developed based on applicable standards and local code requirements.'],
+        ['Can you support redesign of existing buildings?', 'Yes. We assess existing structures and provide retrofit or redesign recommendations.']
+      ],
+      ctaTitle: 'Need a structural system you can build with confidence?',
+      ctaText: 'Talk to our engineering team for a practical structural design scope tailored to your project.'
+    },
+    '/services/construction-management': {
+      theme: 'civil',
+      title: 'Construction Management Services | EliTechWiz',
+      description: 'Construction management services to improve execution control, quality assurance, and delivery timelines.',
+      heroTitle: '<em class="is-italic">Construction Management</em> that keeps delivery on track',
+      heroText: 'We coordinate schedules, vendors, quality, and reporting to reduce project delays and improve execution predictability.',
+      tags: ['Planning', 'Site Control', 'Quality', 'Delivery'],
+      processTitle: 'Construction management model focused on control and transparency',
+      processSubtitle: 'Project planning, contractor coordination, risk tracking, quality checks, and reporting.',
+      benefitsTitle: 'How your project benefits from managed execution',
+      benefitsSubtitle: 'Fewer delays, clearer accountability, and stronger communication from kickoff to handover.',
+      expertiseTitle: 'Execution areas we manage',
+      expertiseSubtitle: 'Timeline planning, budget tracking, procurement coordination, and issue resolution.',
+      toolsTitle: 'Project delivery stack we use',
+      toolsSubtitle: 'Structured systems that improve site visibility and team coordination.',
+      tools: ['Gantt Planning', 'Site Logs', 'RFI Tracking', 'QA Checklists', 'Risk Registers', 'Progress Dashboards', 'Budget Control', 'Handover Packs'],
+      faqs: [
+        ['Do you manage both small and large projects?', 'Yes. We support projects of different sizes with tailored control mechanisms.'],
+        ['Can you coordinate subcontractors and suppliers?', 'Yes. We align communication, timelines, and deliverables across all parties.'],
+        ['How do you handle delays?', 'We track early risk signals and run mitigation actions before delays escalate.'],
+        ['Do you provide regular project reporting?', 'Yes. You receive structured updates on progress, budget, quality, and risks.'],
+        ['Can you join mid-project?', 'Yes. We can step in, stabilize operations, and improve delivery control.']
+      ],
+      ctaTitle: 'Take control of your construction timeline',
+      ctaText: 'Book a project review to identify delivery risks and define a stronger execution plan.'
+    },
+    '/services/infrastructure-planning': {
+      theme: 'civil',
+      title: 'Infrastructure Planning Services | EliTechWiz',
+      description: 'Infrastructure planning services for scalable, resilient, and efficient civil engineering projects.',
+      heroTitle: '<em class="is-italic">Infrastructure Planning</em> for resilient long-term growth',
+      heroText: 'We plan infrastructure systems with feasibility, lifecycle value, and operational sustainability at the center.',
+      tags: ['Feasibility', 'Utilities', 'Transport', 'Masterplanning'],
+      processTitle: 'Planning workflow for reliable infrastructure outcomes',
+      processSubtitle: 'Needs assessment, feasibility analysis, concept design, and implementation planning.',
+      benefitsTitle: 'What strong infrastructure planning delivers',
+      benefitsSubtitle: 'Better investment decisions, reduced rework risk, and scalable system architecture.',
+      expertiseTitle: 'Planning scope we support',
+      expertiseSubtitle: 'Urban infrastructure, utility networks, transport-support facilities, and expansion planning.',
+      toolsTitle: 'Planning and analysis toolkit',
+      toolsSubtitle: 'Data-driven planning methods and digital engineering documentation.',
+      tools: ['Feasibility Models', 'GIS Inputs', 'Demand Forecasts', 'Concept Layouts', 'Risk Analysis', 'Cost Planning', 'Phasing Strategy', 'Stakeholder Maps'],
+      faqs: [
+        ['What is included in infrastructure planning?', 'Feasibility, scope definition, capacity planning, phasing, and implementation guidance.'],
+        ['Can you plan for future expansion?', 'Yes. We design planning frameworks that accommodate future growth and upgrades.'],
+        ['Do you support utility and transport planning?', 'Yes. We cover essential infrastructure layers relevant to project goals.'],
+        ['How do you manage planning risks?', 'We run scenario-based analysis and define mitigation options early.'],
+        ['Do you provide implementation-ready outputs?', 'Yes. Deliverables include practical planning documents and decision support materials.']
+      ],
+      ctaTitle: 'Plan infrastructure with clarity and confidence',
+      ctaText: 'Schedule a planning session and define a scalable roadmap for your infrastructure project.'
+    },
+    '/services/cad-bim-services': {
+      theme: 'civil',
+      title: 'CAD and BIM Services | EliTechWiz',
+      description: 'CAD and BIM services for coordinated engineering documentation, clash detection, and efficient construction delivery.',
+      heroTitle: '<em class="is-italic">CAD and BIM Services</em> for precise digital execution',
+      heroText: 'We produce coordinated CAD and BIM outputs that improve design quality, reduce clashes, and accelerate project delivery.',
+      tags: ['BIM Modeling', 'Coordination', 'Clash Detection', 'Documentation'],
+      processTitle: 'Digital engineering workflow for coordinated delivery',
+      processSubtitle: 'Model setup, multidisciplinary coordination, clash resolution, and documentation handover.',
+      benefitsTitle: 'Why teams choose our CAD and BIM services',
+      benefitsSubtitle: 'Improved design consistency, fewer site conflicts, and better construction readiness.',
+      expertiseTitle: 'CAD/BIM execution capabilities',
+      expertiseSubtitle: '3D modeling, detail production, federated model coordination, and revision control.',
+      toolsTitle: 'Design platforms we operate',
+      toolsSubtitle: 'Professional CAD/BIM tools for reliable and auditable outputs.',
+      tools: ['Revit', 'AutoCAD', 'Navisworks', 'BIM 360', 'Civil 3D', 'Model QA', 'Sheet Sets', 'Coordination Logs'],
+      faqs: [
+        ['Do you provide BIM models for all disciplines?', 'Yes. We support multidisciplinary model coordination based on project scope.'],
+        ['Can you convert 2D drawings into BIM?', 'Yes. We can build structured BIM models from existing CAD documentation.'],
+        ['Do you perform clash detection?', 'Yes. Clash detection and resolution tracking are core parts of our workflow.'],
+        ['Can you support construction documentation?', 'Yes. We provide drawing sets and model outputs for execution teams.'],
+        ['How do you manage revisions?', 'We maintain version control and structured change logs for traceability.']
+      ],
+      ctaTitle: 'Improve coordination with accurate digital models',
+      ctaText: 'Book a CAD/BIM consultation and get a model delivery plan aligned with your construction workflow.'
+    },
+    '/services/environmental-engineering': {
+      theme: 'civil',
+      title: 'Environmental Engineering Services | EliTechWiz',
+      description: 'Environmental engineering services for sustainable design, compliance support, and resilient project delivery.',
+      heroTitle: '<em class="is-italic">Environmental Engineering</em> for sustainable project outcomes',
+      heroText: 'We help teams design and execute projects with environmental responsibility, regulatory alignment, and long-term performance.',
+      tags: ['Sustainability', 'Compliance', 'Impact', 'Resilience'],
+      processTitle: 'Environmental engineering process for practical sustainability',
+      processSubtitle: 'Baseline assessment, impact analysis, mitigation planning, and ongoing compliance support.',
+      benefitsTitle: 'Value delivered through environmental engineering',
+      benefitsSubtitle: 'Lower environmental risk, stronger compliance posture, and more resilient project planning.',
+      expertiseTitle: 'Environmental services we provide',
+      expertiseSubtitle: 'Impact mitigation planning, sustainability integration, and environmental performance support.',
+      toolsTitle: 'Assessment and reporting methods',
+      toolsSubtitle: 'Structured analysis and documentation for informed project decisions.',
+      tools: ['Impact Review', 'Mitigation Plans', 'Compliance Check', 'Sustainability Metrics', 'Site Assessment', 'Reporting Packs', 'Monitoring Plans', 'Advisory Support'],
+      faqs: [
+        ['Do you help with environmental compliance planning?', 'Yes. We support planning and documentation aligned to project requirements.'],
+        ['Can you support sustainable infrastructure initiatives?', 'Yes. We integrate sustainability criteria into design and execution recommendations.'],
+        ['Do you provide environmental risk assessments?', 'Yes. We assess risk exposure and define mitigation actions.'],
+        ['Can your team work with project engineers and contractors?', 'Yes. We collaborate across design and execution stakeholders.'],
+        ['What industries do you support?', 'We support construction, infrastructure, and mixed civil development contexts.']
+      ],
+      ctaTitle: 'Build responsibly with engineering-backed sustainability',
+      ctaText: 'Speak with our team to align your project with practical environmental goals and compliance needs.'
+    }
+  };
+
+  function setNodeText(node, text, asHtml) {
+    if (!node) return;
+    if (asHtml) node.innerHTML = text;
+    else node.textContent = text;
+  }
+
+  function setManyTexts(selector, values) {
+    const nodes = document.querySelectorAll(selector);
+    nodes.forEach(function (node, i) {
+      if (values[i] !== undefined) node.textContent = values[i];
+    });
+  }
+
+  function rewriteServicePages() {
+    if (!window.location) return;
+    const path = window.location.pathname || '';
+    const data = servicePageData[path];
+    if (!data) return;
+
+    document.body.classList.add('elite-service-page');
+    document.body.classList.add(data.theme === 'cyber' ? 'elite-service-page-cyber' : 'elite-service-page-civil');
+
+    document.title = data.title;
+    setMetaByName('description', data.description);
+    setMetaByProperty('og:title', data.title);
+    setMetaByProperty('twitter:title', data.title);
+    setMetaByProperty('og:description', data.description);
+    setMetaByProperty('twitter:description', data.description);
+
+    setNodeText(document.querySelector('.services-hero_heading-wrapper .heading-style-h1'), data.heroTitle, true);
+    setNodeText(document.querySelector('.services-hero_text'), data.heroText);
+    setManyTexts('.hero_title-tags .hero_title-tag', data.tags || []);
+    setManyTexts('.services-hero_stats-title', ['120+', '98%', '24/7']);
+    setManyTexts('.services-hero_stats-text', [
+      'Successful engagements <br/>delivered by our team',
+      'Clients report improved <br/>operational confidence',
+      'Support coverage and <br/>incident response mindset'
+    ]);
+
+    setNodeText(document.querySelector('.services-section_heading-wrapper.is-principles .heading-h2'), 'Specialized delivery model for <em class="is-italic">' + (data.theme === 'cyber' ? 'cybersecurity' : 'civil engineering') + '</em> projects', true);
+    setManyTexts('.services-principles_card-heading', ['Technical Depth', 'Execution Discipline', 'Clear Communication']);
+    setManyTexts('.services-principles_card-text', [
+      'Domain-focused expertise for complex requirements.',
+      'Structured workflow with accountable milestones.',
+      'Transparent updates for confident decisions.'
+    ]);
+
+    setNodeText(document.querySelector('.section_services-process .heading-h2'), data.processTitle);
+    setNodeText(document.querySelector('.section_services-process .section_subheading'), data.processSubtitle);
+
+    setNodeText(document.querySelector('.services-section_heading-wrapper.is-benefits .heading-h2'), data.benefitsTitle, false);
+    setNodeText(document.querySelector('.section_services-benefits .section_subheading'), data.benefitsSubtitle);
+    setManyTexts('.services-benefits_card-heding', ['Delivery Confidence', 'Operational Strength']);
+    setManyTexts('.services-benefits_card-text', [
+      'A practical execution model that keeps scope, quality, and outcomes aligned.',
+      'Decisions backed by technical evidence and implementation-ready recommendations.'
+    ]);
+
+    setNodeText(document.querySelector('.services-section_heading-wrapper.is-cases .heading-h2'), 'Project outcomes that prove <em class="is-italic">real delivery value</em>', true);
+    setNodeText(document.querySelector('.section_services-cases .section_subheading'), 'We focus on practical outcomes, measurable improvements, and dependable delivery quality across engagements.');
+
+    setNodeText(document.querySelector('.services-section_heading-wrapper.is-expertise .heading-style-h2, .services-section_heading-wrapper.is-expertise .heading-h2'), data.expertiseTitle);
+    setNodeText(document.querySelector('.section_services-expertise .section_subheading'), data.expertiseSubtitle);
+
+    setNodeText(document.querySelector('.services-section_heading-wrapper.is-tools .heading-h2'), data.toolsTitle, false);
+    setNodeText(document.querySelector('.section_services-tools .section_subheading'), data.toolsSubtitle);
+    setManyTexts('.services-page_tools-card-text', data.tools || []);
+
+    if (Array.isArray(data.faqs)) {
+      const qNodes = document.querySelectorAll('.faq_item-question');
+      const aNodes = document.querySelectorAll('.faq_item-answer');
+      data.faqs.forEach(function (pair, i) {
+        if (qNodes[i]) qNodes[i].textContent = pair[0];
+        if (aNodes[i]) aNodes[i].textContent = pair[1];
+      });
+    }
+
+    setNodeText(document.querySelector('.services-cta_heading'), data.ctaTitle, false);
+    setNodeText(document.querySelector('.services-cta_text'), data.ctaText);
+  }
+
   const newBlogPosts = [
     {
       slug: '/blog/homepage-design',
@@ -1060,6 +1410,7 @@
       redesignHomeResultsSection();
       rewriteHomePageCopy();
       refreshBlogContent();
+      rewriteServicePages();
       scheduleInject(250);
       scheduleInject(1200);
       setTimeout(replaceFooterLocations, 250);
@@ -1076,6 +1427,7 @@
       setTimeout(redesignHomeResultsSection, 250);
       setTimeout(rewriteHomePageCopy, 250);
       setTimeout(refreshBlogContent, 250);
+      setTimeout(rewriteServicePages, 250);
     });
   } else {
     ensureWebflowIxClassFallback();
@@ -1096,6 +1448,7 @@
     redesignHomeResultsSection();
     rewriteHomePageCopy();
     refreshBlogContent();
+    rewriteServicePages();
     scheduleInject(250);
     scheduleInject(1200);
     setTimeout(replaceFooterLocations, 250);
@@ -1112,6 +1465,7 @@
     setTimeout(redesignHomeResultsSection, 250);
     setTimeout(rewriteHomePageCopy, 250);
     setTimeout(refreshBlogContent, 250);
+    setTimeout(rewriteServicePages, 250);
   }
 
   window.addEventListener('load', function () {
@@ -1150,6 +1504,7 @@
       setTimeout(redesignHomeResultsSection, 120);
       setTimeout(rewriteHomePageCopy, 120);
       setTimeout(refreshBlogContent, 120);
+      setTimeout(rewriteServicePages, 120);
     }
   }, { passive: true });
 })();
