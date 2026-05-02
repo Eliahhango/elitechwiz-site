@@ -1,0 +1,25 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#040A15"/>
+      <stop offset="0.45" stop-color="#0D2B53"/>
+      <stop offset="1" stop-color="#1A4A75"/>
+    </linearGradient>
+    <radialGradient id="shine" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(250 140) rotate(50) scale(520 320)">
+      <stop stop-color="#63E0FF" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#63E0FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#shine)"/>
+  <rect x="980" y="170" width="500" height="560" rx="30" fill="#0B1328" fill-opacity="0.72" stroke="#3D8FFF"/>
+  <circle cx="1120" cy="320" r="66" fill="#39C5FF" fill-opacity="0.28"/>
+  <circle cx="1268" cy="430" r="52" fill="#52E3CF" fill-opacity="0.28"/>
+  <circle cx="1186" cy="555" r="40" fill="#7F9DFF" fill-opacity="0.28"/>
+  <path d="M220 640C360 520 530 420 760 300" stroke="#74B3FF" stroke-width="8" stroke-linecap="round" opacity="0.8"/>
+  <path d="M220 700C420 560 640 470 850 410" stroke="#5CE6C2" stroke-width="8" stroke-linecap="round" opacity="0.75"/>
+  <text x="120" y="320" fill="#F3FAFF" font-family="Poppins, Arial, sans-serif" font-size="74" font-weight="700">SEO + UX Checklist</text>
+  <text x="120" y="406" fill="#F3FAFF" font-family="Poppins, Arial, sans-serif" font-size="74" font-weight="700">for B2B Lead Growth</text>
+  <text x="120" y="492" fill="#BDE5FF" font-family="Poppins, Arial, sans-serif" font-size="40" font-weight="500">Practical actions for teams in Dar and Kibaha</text>
+  <text x="120" y="572" fill="#8DC3FF" font-family="Poppins, Arial, sans-serif" font-size="30" font-weight="600">EliTechWiz Strategy Notes</text>
+</svg>

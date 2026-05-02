@@ -1,0 +1,28 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+
+# Node
+node_modules/
+dist/
+
+# Accidentally scraped CDN/external mirror folders
+cdn.jsdelivr.net/
+cdn.prod.website-files.com/
+cdnjs.cloudflare.com/
+d3e54v103j8qbb.cloudfront.net/
+unpkg.com/
+script.crazyegg.com/
+www.googletagmanager.com/
+dribbble.com/
+medium.com/
+webflow.com/
+www.facebook.com/
+www.instagram.com/
+x.com/
+
+.env
